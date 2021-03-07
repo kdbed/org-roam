@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/computer-science/algos/_index.en.md
+---
+Title: Algorithms
+weight: 5
+chapter: true
+---
+
+### algos
+
+# Algorithms: Design, Analysis, and Implementation
+
+comments
+#+END_SRC

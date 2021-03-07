@@ -1,0 +1,8 @@
+ #+title: Introduction
+#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+HUGO_SECTION: infosec/iam
+#+hugo_weight: 1
+
+* Introduction to Identity Access Management
+Security solutions generally fall into one of three groups, referred to here as the three pillars of cybersecurity cite:haber2019identity:
++ 

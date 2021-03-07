@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/computer-science/programming-languages/_index.en.md
+---
+Title: Programming Languages
+weight: 50
+chapter: true
+---
+
+### learn to talk
+
+# Programming Languages
+
+comments
+#+END_SRC

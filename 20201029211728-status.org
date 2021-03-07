@@ -1,0 +1,3 @@
+#+title: Status
+#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+HUGO_SECTION: misc

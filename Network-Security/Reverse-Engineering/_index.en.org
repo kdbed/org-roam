@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/infosec/reverse/_index.en.md
+---
+Title: Reverse Engineering
+weight: 6
+chapter: true
+---
+
+### re
+
+# Reverse Engineering
+
+comments
+#+END_SRC

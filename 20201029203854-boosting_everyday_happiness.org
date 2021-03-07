@@ -1,0 +1,32 @@
+#+title: Boosting everyday happiness
+#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+HUGO_SECTION: misc
+
+
+* The Hormones
+There are four main hormones that trigger feelings of happiness, each connected to specific events/rewards : dopamine, serotonin, oxytocin, endorphins.
+
+** Dopamine
+ - hormone
+ - related to motivation and rewards
+ - low dopamine (e.g., during depression) can lead to lack of motivation and loss of interest in various activities
+ - to boost : caffeine, sugar, certain recreational drugs; set a new goal and take small steps toward it every day
+** Serotonin
+ - neurotransmitter involved in regulation of mood (also digestion -- gut-brain -- , sleep, bone health)
+ - confidence triggers serotonin
+ - focus on achievements, exercise, get out of your comfort zone
+** Oxytocin
+ - love hormone; bond and trust
+ - kissing, hugging, having sex
+ - boost with physical intimacy
+ - social trust is an important element
+** Endorphins
+ - linked with exercise
+ - natural pain killer; the injured animal escapes the predator
+ - laughter, working out, eating chocolate, working out, meditating
+
+
+
+- tags :: [[file:20201029204132-happiness.org][Happiness]], [[file:20201029211146-the_gut_brain_connection.org][The Gut-Brain Connection]], [[file:20201029211728-status.org][Status]]
+
+bibliography:refs.bib

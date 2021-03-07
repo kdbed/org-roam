@@ -1,0 +1,9 @@
+#+title: Scripting
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: infosec/windows/powershell
+#+hugo_weight: 1
+
+* Basic Scripting in Powershell
+Powershell can be used to create reusable and context-independent tools, referred to as commands.  Commands execute one task efficiently; they are then snapped together to form powerful tools.  Thus one tends to focus efforts in powershell on making small, self-contained commands that are usable across a multitude of situations.

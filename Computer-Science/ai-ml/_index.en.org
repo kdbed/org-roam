@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/computer-science/ai-ml/_index.en.md
+---
+Title: Artificial Intelligence and Machine Learning
+weight: 5
+chapter: true
+---
+
+### machines ...
+
+# Artificial Intelligence and Machine Learning
+
+comments
+#+END_SRC

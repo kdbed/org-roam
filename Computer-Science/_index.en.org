@@ -1,0 +1,14 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/computer-science/_index.en.md
+---
+Title: Computer Science
+weight: 3
+chapter: true
+pre: "<b>3. </b>"
+---
+
+### Chapter 3
+
+# Computer Science
+
+computers
+#+END_SRC

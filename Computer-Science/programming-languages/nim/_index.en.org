@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/computer-science/programming-languages/nim/_index.en.md
+---
+Title: Nim
+weight: 8
+chapter: true
+---
+
+### not c
+
+# Nim
+
+comments
+#+END_SRC

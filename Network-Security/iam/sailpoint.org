@@ -1,0 +1,4 @@
+ #+title: Sailpoint
+#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+HUGO_SECTION: infosec/iam
+#+hugo_weight: 10

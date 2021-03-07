@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/infosec/windows/_index.en.md
+---
+Title: Windows
+weight: 2
+chapter: true
+---
+
+### gates
+
+# Windows
+
+comments
+#+END_SRC

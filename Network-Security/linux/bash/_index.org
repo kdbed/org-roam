@@ -1,0 +1,14 @@
+#+title:test
+
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/infosec/linux/bash/_index.en.md
+---
+Title: bash
+weight: 1
+chapter: true
+---
+
+### $ whoami
+
+# bash
+
+#+END_SRC

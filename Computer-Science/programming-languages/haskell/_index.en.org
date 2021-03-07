@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/computer-science/programming-languages/haskell/_index.en.md
+---
+Title: Haskell
+weight: 3
+chapter: true
+---
+
+### Types
+
+# Haskell
+
+comments
+#+END_SRC

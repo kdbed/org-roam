@@ -1,0 +1,14 @@
+#+title: Algorithms in Haskell
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: computer-science/algos
+#+hugo_weight: 1
+
+* Introduction
+
+This is an introduction to the principles of algorithm design from a purely functional approach cite:bird_gibbons_2020.  Using functions to express algorithms represents a dramatic shift from the imperative approach, as an algorithm expressed as a function is composed of other, more basic functions that can be studied separately and reused in other algorithms.  The properties of these functions and their relationship to others can be captured with simple equational properties.
+
+To reason formally about imperative programs, one must formulate their specifications using the predicate calculus, using loop invariants to prove that they're correct.  However, one cannot easily reason about the properties of an imperative program directly in terms of the language of its code. Thus, there is usually a wide gap between books on formal program design and algorithm design.
+
+A functional approach bridges this gap.

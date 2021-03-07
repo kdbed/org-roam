@@ -1,0 +1,28 @@
+#+title: Categories, Functors, and Natural Transformations
+#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+HUGO_SECTION: math/category-theory
+#+hugo_weight: 1
+
+* Category Theory Basics
+**  Category Theory and Mathematics
+Category theory captures a number of essential features of mathematics. Mathematical theories often have a number of common ingredients: there are /objects/ -- numbers, sets, etc. -- and /arrows/ that provide relations among the objects.
+ - a number is related to its divisors
+ - functions relate sets
+Furthermore, these relations can be composed.  In category theory, one has /objects/ and /arrows/, and results about these categories only make use of a single operation: composition of arrows. In this way, category theory ignores domain specific information, obtaining rich results that apply to every category.
+**  Basic Definitions
+Begin with the defintion of a category:
+
+ *Definition*  : A *category* $\mathcal{C} = (O,A,\circ)$ consists of:
+ 1. a collection $O$ of /objects/, written $a,b,... \in O$
+ 2. a collection $A$ of /arrows/, written $f,g,... \in A$ between these objects, e.g., $ f: a \rightarrow b$
+ 3. a notion of /composition/ $f \circ g$ of arrows
+ 4. an identity arrow $\text{id}_a$ for each object $a \in O$
+
+The composition operation and identity arrow should satisfy the following laws:
+
+ - /Composition/: If $f : a \rightarrow b$ and $g : b \rightarrow c$ then $g \circ f : a \rightarrow c$.
+    {{< figure src="/images/cat1.png" >}}
+ - /
+    {{< figure src="/images/cat2.png" >}}
+ - /
+    {{< figure src="/images/cat2.png" >}}

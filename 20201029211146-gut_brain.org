@@ -1,0 +1,11 @@
+#+title: The Gut-Brain Connection
+#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+HUGO_SECTION: misc
+
+
+#+begin_src python :tangle yes :noweb tangle
+print(4)
+#+end_src
+
+#+RESULTS:
+: None

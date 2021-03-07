@@ -1,0 +1,31 @@
+#+title: Foundations
+#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+HUGO_SECTION: computer-science/automata-and-computability
+#+hugo_weight: 1
+#+ROAM_TAGS: undecidability
+
+
+* Computing cite:gopalakrishnan2019automata
+#+begin_quote
+There should be an algorithm -- a systematic and mechanical procedure
+that also terminates on any input -- to decide the truth of
+any logical statement in mathematics. --- David Hilbert
+#+end_quote
+A series of mathematicians -- including G\''{o}del, Church, and Turing -- concerned themselves with this goal and showed it impossible to realize.  Many mathematical systems are _undecidable_ [[file:../../20201111222115-undecidability.org][(undecidability]]): there isn't an algorithm to decide the truth or falsity of statements made in them. Furthermore, many logical systems are _incomplete_ ([[file:../../20201111222349-completeness.org][Completeness]]): there are logical systems in which one cannot _prove_ known truths in them.
+
+** Definition of Computer
+Involved in the task of defining computer were Turing, Church, Post, Kleene, von Neumann, and others.  Turing's approach was to assume basic representations for numbers, i.e., in terms of $1$'s and $0$'s, and describe performing basic operations on them.  The basic recipe looked something like the following:
+------
+#+begin_comment
++ At each step of the algorithm, if a character _c_ (say 0) is read under the Turing machine head (cursor), change the character to a different one (say 1).  Then move the head one step left, one step right, or stay at the same spot.  Then advance to the next step of the algorithm.
++ The algorithm has halted when it reaches one of the previously selected "halting steps".  In that case, the computation ends, leaving behind the contents of the tape as the final result. 
+#+end_comment
+------
+
+
+
+
+
+
+
+bibliography:../../refs.bib

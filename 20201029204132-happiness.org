@@ -1,0 +1,5 @@
+#+title: Happiness
+#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+HUGO_SECTION: misc
+
+* Happiness

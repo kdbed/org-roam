@@ -1,0 +1,29 @@
+#+title: Logic and Proof - Introduction
+#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+HUGO_SECTION: math/logic-and-proof
+#+hugo_weight: 1
+
+* Mathematical Proof
+The birth of mathematics proper is often placed in ancient Greece around the sixth century BC, when deductive proof was first introduced. It was perhaps Thales of Miletus who deserves credit for recognizing the importance of not just what we know but how we know it; he found grounds for knowledge in the deductive method. Euclid later codified a deductive approach to geometry in his _Elements_, and the axiomatic style set a paradigm for rigorous argumentation.
+
+** Lean Proof
+
+#+begin_src lean :results output
+constant and : Prop → Prop → Prop
+constant or : Prop → Prop → Prop
+constant not : Prop → Prop
+constant implies : Prop → Prop → Prop
+
+variables p q r : Prop
+#check and p q                      -- Prop
+#check or (and p q) r               -- Prop
+#check implies (and p q) (and q p)  -- Prop
+#+end_src
+
+#+begin_src python :results output
+print(2+2)
+#+end_src
+
+#+RESULTS:
+: 4
+

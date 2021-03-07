@@ -1,0 +1,14 @@
+#+title: Functional Programming
+#+setupfile:/home/kdb/org-roam/hugo_setup.org
+#+hugo_section: math/category-theory
+#+hugo_weight: 2
+
+* Functional Programming and Category Theory
+
+#+BEGIN_SRC python :noweb yes :tangle arch.py
+y = 2 + 2
+print(y)
+#+END_SRC
+
+#+RESULTS:
+: None

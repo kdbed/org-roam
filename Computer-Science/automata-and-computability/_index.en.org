@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/computer-science/automata-and-computability/_index.en.md
+---
+Title: Automata and Computability
+weight: 7
+chapter: true
+---
+
+### automata
+
+# Automata & Computability 
+
+comments
+#+END_SRC

@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/infosec/windows/powershell/_index.en.md
+---
+Title: Powershell
+weight: 1
+chapter: true
+---
+
+### pwsh
+
+# Powershell
+
+comments
+#+END_SRC

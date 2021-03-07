@@ -1,0 +1,14 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/infosec/_index.en.md
+---
+Title: Information Security
+weight: 4
+chapter: true
+pre: "<b>4. </b>"
+---
+
+### infosec
+
+# Information Security
+
+comments
+#+END_SRC
