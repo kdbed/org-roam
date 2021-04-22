@@ -11,10 +11,19 @@ The term *command line* will here refer to the various non-GUI executables insta
  + _shell_ : the software that interprets and executes the commands typed in the terminal; examples are bash, sh, csh, tcsh, etc.
  + _CLI (Command Line Interface)_ : a user interface in which users type commands and see results printed on the screen
 
- Most examples are given in the bash shell and command language, largely due to its ubuiqity.  This is often the only tool available to penetration testers, for example.
+ Most examples are given in the bash shell and command language, largely due to its ubiquity.  This is often the only tool available to penetration testers, for example. cite:troncone2019cybersecurity
 
 **  Running bash commands on Windows
 There are several options for running bash commands on Windows systems.
 + _Git Bash_ : The Windows installation of Git includes a port of bash.  *Git Bash* is herein the method of choice.
 + _Cygwin_ : Cygwin is a full-featured Linux emulator that also includes the ability to install a variety of packages. Like Git Bash, it allows calling a number of native Windows commands in addition to standard Linux commands.
 + _Windows Subsystem for Linux_ : Windows 10 includes a native method to run Linux if the Windows Subsystem for Linux (WSL) is installed.
+
+** Command Line Basics
+When several words appear on the command line, bash assumes the first is the name of a program and the rest are arguments.  To have bash run the command `mkdir` and supply it with two arguments, one would input
+#+begin_src shell -n
+mkdir -p /tmp/new/directory
+#+end_src
+where, as is convention, the option is first and begins with '-'.  This creates a new directory */tmp/new/directory*, and the option ensures no errors are reported and any intervening directories will be created along the way.
+
+The commands that can be run are either files, built-ins, or keywords.
