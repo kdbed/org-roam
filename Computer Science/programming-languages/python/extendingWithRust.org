@@ -1,0 +1,13 @@
+#+title: Extending Python with Rust
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: computer-science/programming-languages/python
+#+hugo_weight: 1
+
+* Extending Python with Rust
+** Motivation
+Some reasons for extending Python with a language like Rust include performance issues, as Python is incredibly slow at certain tasks; reusability, since sometimes porting code is a bother; cooperation, for not all who code do so in Python; and migration, which can be done one Python module at a time. As far as Rust is concerned, it has almost no runtime (e.g., no garbage collector), which makes it behave well in a dynamic library.
+
+** Bindings
+Two libraries providing bindings are _rust-cpython_ and _PyO3_.

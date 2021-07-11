@@ -1,0 +1,25 @@
+#+TITLE: Forensics with Dshell
+
+* TOC
+:PROPERTIES:
+:TOC:      :include all :depth 3
+:END:
+:CONTENTS:
+- [[#toc][TOC]]
+- [[#dshell-background][Dshell Background]]
+:END:
+
+* Dshell Background
+Dshell is an open source, Python-based forensic analysis framework developed by the U.S. Army Research Laboratory. It provides users with the ability to develop custom analysis modules for understanding events of cyber intrusion. The framework handles stream reassembly of both IPv4 and IPv6 network traffic; it also includes geolocation and IP-to-ASN mapping for each connection. Additionally, the framework plugins are designed to aid in the understanding of network traffic and present results to the user in a concise, useful manner. Since Dshell is written entirely in Python, the code base can be customized to particular problems by modifying an existing decoder to extract different information from existing protocols.
+
+There are additional modules within the Dshell framework that can be accessed to increase network security; however, the ability to rapidly develop and share analytical modules is the core strength of the framework.
+
+Summary of key features:
+
+    - Deep packet analysis using specialized plugins
+    - Robust stream reassembly
+    - IPv4 and IPv6 support
+    - Custom output handlers
+    - Chainable plugins
+
+https://github.com/USArmyResearchLab/Dshell

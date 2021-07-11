@@ -1,0 +1,81 @@
+#+TITLE: C++ Recipes
+
+
+* Basics
+** Printing Text to Console
+*** Program
+#+begin_src cpp :tangle ./code/textPrint.cpp
+// Text-printing program
+#include <iostream> // enables program to output data to screen
+,#+begin_src shell -n :exports both :results output verbatim :tangle file
+ghc hello.hs
+#+end_src
+
+// function main begins program execution
+int main() {
+  std::cout << "Welcome to C++!\n"; // display message
+
+  return 0; // indicate normal execution
+} // end of main function
+#+end_src
+
+*** Compilation
+#+begin_src shell -n :exports both :results output verbatim
+g++ textPrint.cpp -o textPrint
+#+end_src
+
+#+RESULTS:
+
+*** Execution
+#+begin_src shell -n :exports both :results output verbatim
+./textPrint
+#+end_src
+
+#+RESULTS:
+: Welcome to C++!
+** Adding Integers
+*** Program
+Obtain two integers typed by user at the keyboard, compute their sum and return result to =std::cout=.
+#+begin_src cpp :tangle ./code/addInts.cpp
+// Addition program : display the sum of two integers
+#include <iostream> // enables program to perform input and output
+
+// function main begins program execution
+int main() {
+  // declaring and initializing variables
+  int number1{0}; // first integer to add (initialized to 0; list
+                  // initialization, introduced in C++11)
+  int number2{0}; // second integer to add (initialized to 0)
+  int sum{0};     // sum of number1 and number2 (initialized to 0)
+
+  // alternative : =int number1{0}, number2{0}, sum{0};=, but this is less
+  // readable and makes comments more difficult to add
+
+  std::cout << "Enter first integer: "; // prompt user for data
+  std::cin >> number1; // read first integer from user into number1
+
+  std::cout << "Enter second integer: "; // prompt user for data
+  std::cin >> number2; // read second integer from user into number2
+
+  sum = number1 + number2; // add the numbers; store result in sum
+
+  // alternative : = sum{number1 + number2} =
+  std::cout << "Sum is " << sum << std::endl; // display sum; end line
+}
+#+end_src
+_Note : C++ is case-sensitive._
+
+
+*** Compilation
+#+begin_src shell -n :exports both :results output verbatim
+g++ ./code/addInts.cpp -o ./code/addInts
+#+end_src
+
+#+RESULTS:
+*** Execution
+#+begin_src shell -n :exports both :results output verbatim
+echo "15" "98" | ./code/addInts
+#+end_src
+
+#+RESULTS:
+: Enter first integer: Enter second integer: Sum is 113

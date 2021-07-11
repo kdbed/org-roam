@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/computer-science/programming-languages/rust/_index.en.md
+---
+Title: Rust
+weight: 6
+chapter: true
+---
+
+### safety
+
+# Rust
+
+comments
+#+END_SRC

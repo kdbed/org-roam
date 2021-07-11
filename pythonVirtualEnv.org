@@ -1,0 +1,15 @@
+#+TITLE: Python Virtual Env
+
+
+* python
+:PROPERTIES:
+:header-args: :python /home/kdb/.local/share/virtualenvs/scratch-nYSat3lD/bin/python :session venv-scratch :results output verbatim
+:END:
+
+#+BEGIN_SRC python
+import sys
+import numpy as np
+print('\n'.join(sys.path))
+#+END_SRC
+
+#+RESULTS:

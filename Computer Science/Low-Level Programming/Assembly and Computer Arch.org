@@ -1,0 +1,17 @@
+#+TITLE: Assembly Language and Computer Architecture
+#+options: toc: 2
+
+
+
+* Contents
+:PROPERTIES:
+:TOC:      :include all :depth 3
+:END:
+:CONTENTS:
+- [[#contents][Contents]]
+- [[#basic-computer-architecture][Basic Computer Architecture]]
+:END:
+
+* Basic Computer Architecture
+We consider the fundamentals of computer functioning, describing the core model of computation, enumerating its extensions and focusing on two of them, registers and the hardware stack. cite:IgorZhirkov10
+**

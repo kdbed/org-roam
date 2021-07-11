@@ -1,0 +1,6196 @@
+(************** Content-type: application/mathematica **************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     95461,       2829]*)
+(*NotebookOutlinePosition[    180845,       6012]*)
+(*  CellTagsIndexPosition[    179814,       5974]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[TextData[{
+  "The ",
+  Cell[BoxData[
+      \(TraditionalForm\`Mathematica\^\[RegisteredTrademark]\)]],
+  "Journal"
+}], "OnlineHeader"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Theorema: A Proving System Based on ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " "
+}], "Title"],
+
+Cell["Bruno Buchberger", "Author"],
+
+Cell[TextData[{
+  "Research Institute for Symbolic Computation\nJohannes Kepler University \
+Linz\nA4232 Schloss Hagenberg, Austria\n",
+  ButtonBox["theorema@theorema.org",
+    ButtonData:>{
+      URL[ "mailto: theorema@theorema.org"], None},
+    ButtonStyle->"Hyperlink"],
+  "\n",
+  ButtonBox["www.theorema.org",
+    ButtonData:>{
+      URL[ "http://www.theorema.org"], None},
+    ButtonStyle->"Hyperlink"]
+}], "Address"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["What is Theorema?",
+  FontSlant->"Plain"]], "SectionFirst",
+  TextAlignment->Left,
+  TextJustification->0],
+
+Cell["\<\
+I have a passion for proving. In my view, proving is the essence of \
+mathematics. As soon as we ask \[OpenCurlyDoubleQuote]why?\
+\[CloseCurlyDoubleQuote] we start proving. Proving is cultivated reasoning. \
+Mathematics cannot be defined by the objects studied but only by its method, \
+which is proving. Formal proving, the basis of computer-supported proving, \
+will drastically change the way we do mathematics. Computing is a special \
+case of proving, and proving is a special case of computing. Actually, \
+computing and proving are two of the three main aspects of formal \
+mathematical activity. The third aspect is solving. Proving, solving, and \
+computing naturally correspond to the way free variables in formulae are \
+considered: They can be universally quantified, existentially quantified, or \
+left free for substitution.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "The Theorema system is programmed in ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " and heavily uses advanced features of the kernel and the front end of ",
+  StyleBox["Mathematica.",
+    FontSlant->"Italic"],
+  " Theorema is developed by the Theorema Working Group (see ",
+  ButtonBox["www.theorema.org",
+    ButtonData:>{
+      URL[ "http://www.theorema.org/"], None},
+    ButtonStyle->"Hyperlink"],
+  "). Theorema allows users to compose \[OpenCurlyDoubleQuote]active\
+\[CloseCurlyDoubleQuote] formal mathematical texts and to process them by \
+proving, solving, and computing (simplifying). Theorema is based on a version \
+of higher order predicate logic and, thus, is a possible frame for all of \
+mathematics."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["\<\
+Some of the unique features of Theorema include the \
+following.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["\<\
+The fundamental interaction between proving, solving, and computing \
+is made explicit.\
+\>", "BulletedList",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "New facilities for automated proving are provided, and, at the same time, \
+full access to the solving and computing power of ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " is given."
+}], "BulletedList",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["\<\
+The \[OpenCurlyDoubleQuote]usual\[CloseCurlyDoubleQuote] \
+mathematical syntax and consistent semantics is implemented, and proofs are \
+generated in a \[OpenCurlyDoubleQuote]natural\[CloseCurlyDoubleQuote] \
+style.\
+\>", "BulletedList",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Theorema has ",
+  StyleBox["one",
+    FontSlant->"Italic"],
+  " uniform logic and software frame, but offers ",
+  StyleBox["many",
+    FontSlant->"Italic"],
+  " general ",
+  StyleBox["and",
+    FontSlant->"Italic"],
+  " special proving, solving, and simplifying methods. "
+}], "BulletedList",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Theorema\[CloseCurlyQuote]s Prove Command",
+  FontSlant->"Plain"]], "Section",
+  TextAlignment->Left,
+  TextJustification->0],
+
+Cell["\<\
+The current provers of Theorema include various predicate logic \
+provers, various induction provers, a set theory prover, and special provers \
+using the Gr\[ODoubleDot]bner bases technique, Collins quantifier \
+elimination, and the Zeilberger-Paule approach to handling combinatorial \
+identities. A recent proof method developed by the author, called the \
+\[OpenCurlyDoubleQuote]PCS-method\[CloseCurlyDoubleQuote], is particularly \
+well-suited for proving formulae with \[OpenCurlyDoubleQuote]alternating \
+quantifiers\[CloseCurlyDoubleQuote], which typically appear in proofs in \
+analysis. An example of applying this method is given below.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["\<\
+Theorema also includes special tools for mathematical knowledge \
+management, natural language proof presentation, and the generation of new \
+pictorial symbols, called \[OpenCurlyDoubleQuote]logicographic symbols\
+\[CloseCurlyDoubleQuote].\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Here is a typical example of defining a mathematical notion in Theorema by \
+entering it in a ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " input cell."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox["Definition",
+        FontWeight->"Bold"], "[", \("\<limit:\>", any[f, a], \n\t
+      limit[f, a]\[DoubleLongLeftRightArrow]\ \(\(\[ForAll] \
+\+\[Epsilon]\)\+\(\[Epsilon] > 0\)\(\[Exists] \+N\(\(\[ForAll] \+n\)\+\(n \
+\[GreaterEqual] N\)\[LeftBracketingBar]f[n] - 
+                    a\[RightBracketingBar] < \[Epsilon]\)\)\)\), 
+      "]"}]], "InputOnly",
+  CellTags->"Definition (limit:)"],
+
+Cell[TextData[{
+  "For ",
+  StyleBox["limit[f,a]", "InlineInput"],
+  ", read \[OpenCurlyDoubleQuote]the sequence ",
+  StyleBox["f",
+    FontSlant->"Italic"],
+  " has limit ",
+  StyleBox["a",
+    FontSlant->"Italic"],
+  "\[CloseCurlyDoubleQuote]. Now, one may be interested in proving a \
+proposition on this notion, such as the following one."
+}], "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox["Proposition",
+        FontWeight->"Bold"], "[", \("\<limit of sum\>", 
+      any[f, a, g, 
+        b], \n\t\((limit[f, a] \[And] 
+            limit[g, b])\)\ \ \ \ \  \[Implies] \ \ \ \ \ limit[f + g, 
+          a + b]\), "]"}]], "InputOnly",
+  LimitsPositioningTokens->{},
+  CellTags->"Proposition (limit of sum)"],
+
+Cell["\<\
+Of course, this proposition cannot be proved without any knowledge \
+of auxiliary notions like \[OpenCurlyQuote]+\[CloseCurlyQuote] and so forth. \
+It may be surprising that actually very little knowledge is necessary for \
+proving the proposition. In this example, the following statements are \
+sufficient for the proof.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox["Definition",
+        FontWeight->"Bold"], "[", \("\<+:\>", 
+      any[f, g, x], \n\t\((f + g)\)[x] = f[x] + g[x]\), "]"}]], "InputOnly",
+  LimitsPositioningTokens->{},
+  CellTags->"Definition (+:)"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox["Lemma",
+        FontWeight->"Bold"], "[", \("\<|+|\>", 
+      any[x, y, a, 
+        b, \[Delta], \[Epsilon]], \n\t\((\[LeftBracketingBar]\((x + 
+                    y)\) - \((a + 
+                    b)\)\[RightBracketingBar] < \((\[Delta] + \
+\[Epsilon])\))\)\ \ \ \ \[DoubleLongLeftArrow]\ \ \ \((\[LeftBracketingBar]x \
+- a\[RightBracketingBar] < \[Delta] \[And] \[LeftBracketingBar]y - 
+                  b\[RightBracketingBar] < \[Epsilon])\)\), 
+      "]"}]], "InputOnly",
+  LimitsPositioningTokens->{},
+  CellTags->"Lemma (|+|)"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox["Lemma",
+        FontWeight->"Bold"], "[", \("\<max\>", any[m, M1, M2], \n\t
+      m \[GreaterEqual] 
+          max[M1, M2]\ \ \ \ \  \[Implies] \ \ \ \ \ \((m \[GreaterEqual] 
+              M1 \[And] m \[GreaterEqual] M2)\)\), "]"}]], "InputOnly",
+  LimitsPositioningTokens->{},
+  CellTags->"Lemma (max)"],
+
+Cell["\<\
+In Theorema, formulae can be combined in \
+\[OpenCurlyDoubleQuote]knowledge bases\[CloseCurlyDoubleQuote] using the \
+\[OpenCurlyDoubleQuote]Theory\[CloseCurlyDoubleQuote] construct, which should \
+be self-explanatory.\
+\>", "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox["Theory",
+        FontWeight->"Bold"], "[", 
+      RowBox[{"\"\<limit\>\"", ",", "\n", "\t", GridBox[{
+            {
+              RowBox[{
+                StyleBox["Definition",
+                  FontWeight->"Bold"], "[", "\"\<limit:\>\"", "]"}]},
+            {
+              RowBox[{
+                StyleBox["Definition",
+                  FontWeight->"Bold"], "[", "\"\<+:\>\"", "]"}]},
+            {
+              RowBox[{
+                StyleBox["Lemma",
+                  FontWeight->"Bold"], "[", "\"\<|+|\>\"", "]"}]},
+            {
+              RowBox[{
+                StyleBox["Lemma",
+                  FontWeight->"Bold"], "[", "\"\<max\>\"", "]"}]}
+            },
+          ColumnAlignments->{Left}]}], "]"}]], "InputOnly",
+  LimitsPositioningTokens->{},
+  CellTags->"Theory (limit)"],
+
+Cell["\<\
+Now a proof of the above goal proposition can be generated \
+completely automatically by just entering the following.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Prove[Proposition["\<limit of sum\>"], 
+      using \[Rule] Theory["\<limit\>"], by \[Rule] PCS]\)], "Input",
+  CellTags->{
+  "2-ary limit", "2-ary limit of sum", "3-ary limit", "3-ary limit of sum", 
+    "4-ary limit", "4-ary limit of sum", "distance of sum", "fsum", 
+    "max-greater", "maximum", "sum of sequences"}],
+
+Cell[BoxData[
+    \(\[SkeletonIndicator]\ ProofObject\ \[SkeletonIndicator]\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[{
+  "The three main arguments of a call to the Theorema command ",
+  StyleBox["Prove", "MR"],
+  " are: the name of the proposition to be proved, the name of the theory \
+(knowledge base) to be used in the proof, and the particular prover by which \
+the proof should be generated. After entering this command, the proof shown \
+in the next section, including the English explanatory intermediate text, \
+will be generated in an extra notebook without any further user interaction."
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["A Proof Generated by Theorema", "Section"],
+
+Cell["Prove:", "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(Proposition (limit of sum))", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox["\[ForAll]", 
+          RowBox[{
+            StyleBox["f",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["a",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["g",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["b",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None]}]], 
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{
+              RowBox[{"limit", "[", 
+                RowBox[{
+                  StyleBox["f",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], ",", 
+                  StyleBox["a",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}], "]"}], "\[And]", 
+              RowBox[{"limit", "[", 
+                RowBox[{
+                  StyleBox["g",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], ",", 
+                  StyleBox["b",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}], "]"}]}], "\[Implies]", 
+            RowBox[{"limit", "[", 
+              RowBox[{
+                RowBox[{
+                  StyleBox["f",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], "+", 
+                  StyleBox["g",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}], ",", 
+                RowBox[{
+                  StyleBox["a",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], "+", 
+                  StyleBox["b",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}]}], "]"}]}], ")"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[",", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"Proposition (limit of sum)"],
+
+Cell["under the assumptions:", "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(Definition (limit:))", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox["\[ForAll]", 
+          RowBox[{
+            StyleBox["f",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["a",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None]}]], 
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{"limit", "[", 
+              RowBox[{
+                StyleBox["f",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], ",", 
+                StyleBox["a",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}], "]"}], "\[DoubleLeftRightArrow]", 
+            RowBox[{
+              UnderscriptBox[
+                UnderscriptBox["\[ForAll]", 
+                  RowBox[{
+                    StyleBox["\[Epsilon]",
+                      FontWeight->"Plain",
+                      FontSlant->"Italic",
+                      Background->None], " "}]], 
+                RowBox[{
+                  StyleBox["\[Epsilon]",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], ">", "0"}]], 
+              RowBox[{
+                UnderscriptBox["\[Exists]", 
+                  RowBox[{
+                    StyleBox["N",
+                      FontWeight->"Plain",
+                      FontSlant->"Italic",
+                      Background->None], " "}]], 
+                RowBox[{
+                  UnderscriptBox[
+                    UnderscriptBox["\[ForAll]", 
+                      RowBox[{
+                        StyleBox["n",
+                          FontWeight->"Plain",
+                          FontSlant->"Italic",
+                          Background->None], " "}]], 
+                    RowBox[{
+                      StyleBox["n",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None], "\[GreaterEqual]", 
+                      StyleBox["N",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None]}]], 
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{"\[LeftBracketingBar]", 
+                        RowBox[{
+                          RowBox[{
+                            StyleBox["f",
+                              FontWeight->"Plain",
+                              FontSlant->"Italic",
+                              Background->None], "[", 
+                            StyleBox["n",
+                              FontWeight->"Plain",
+                              FontSlant->"Italic",
+                              Background->None], "]"}], "-", 
+                          StyleBox["a",
+                            FontWeight->"Plain",
+                            FontSlant->"Italic",
+                            Background->None]}], "\[RightBracketingBar]"}], 
+                      "<", 
+                      StyleBox["\[Epsilon]",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None]}], ")"}]}]}]}]}], ")"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[",", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"Definition (limit:)"],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(Definition (+:))", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox["\[ForAll]", 
+          RowBox[{
+            StyleBox["f",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["g",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["x",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None]}]], 
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{
+              RowBox[{"(", 
+                RowBox[{
+                  StyleBox["f",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], "+", 
+                  StyleBox["g",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}], ")"}], "[", 
+              StyleBox["x",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], "]"}], "=", 
+            RowBox[{
+              RowBox[{
+                StyleBox["f",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "[", 
+                StyleBox["x",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "]"}], "+", 
+              RowBox[{
+                StyleBox["g",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "[", 
+                StyleBox["x",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "]"}]}]}], ")"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[",", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"Definition (+:)"],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(Lemma (|+|))", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox["\[ForAll]", 
+          RowBox[{
+            StyleBox["x",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["y",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["a",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["b",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["\[Delta]",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["\[Epsilon]",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None]}]], 
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{
+              RowBox[{"\[LeftBracketingBar]", 
+                RowBox[{
+                  RowBox[{"(", 
+                    RowBox[{
+                      StyleBox["x",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None], "+", 
+                      StyleBox["y",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None]}], ")"}], "-", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      StyleBox["a",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None], "+", 
+                      StyleBox["b",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None]}], ")"}]}], 
+                "\[RightBracketingBar]"}], "<", 
+              RowBox[{
+                StyleBox["\[Delta]",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "+", 
+                StyleBox["\[Epsilon]",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}]}], "\[DoubleLeftArrow]", 
+            RowBox[{"(", 
+              RowBox[{
+                RowBox[{
+                  RowBox[{"\[LeftBracketingBar]", 
+                    RowBox[{
+                      StyleBox["x",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None], "-", 
+                      StyleBox["a",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None]}], "\[RightBracketingBar]"}], "<", 
+                  StyleBox["\[Delta]",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}], "\[And]", 
+                RowBox[{
+                  RowBox[{"\[LeftBracketingBar]", 
+                    RowBox[{
+                      StyleBox["y",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None], "-", 
+                      StyleBox["b",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None]}], "\[RightBracketingBar]"}], "<", 
+                  StyleBox["\[Epsilon]",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}]}], ")"}]}], ")"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[",", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"Lemma (|+|)"],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(Lemma (max))", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox["\[ForAll]", 
+          RowBox[{
+            StyleBox["m",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["M1",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ",", 
+            StyleBox["M2",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None]}]], 
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{
+              StyleBox["m",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], "\[GreaterEqual]", 
+              RowBox[{"max", "[", 
+                RowBox[{
+                  StyleBox["M1",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], ",", 
+                  StyleBox["M2",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}], "]"}]}], "\[Implies]", 
+            RowBox[{
+              RowBox[{
+                StyleBox["m",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", 
+                StyleBox["M1",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}], "\[And]", 
+              RowBox[{
+                StyleBox["m",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", 
+                StyleBox["M2",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}]}]}], ")"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.643137, 0.756863, 1]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"Lemma (max)"],
+
+Cell["We assume", "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(1)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        RowBox[{"limit", "[", 
+          RowBox[{
+            StyleBox[\(f\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None], ",", 
+            StyleBox[\(a\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], "]"}], "\[And]", 
+        RowBox[{"limit", "[", 
+          RowBox[{
+            StyleBox[\(g\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None], ",", 
+            StyleBox[\(b\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], "]"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[",", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"1"],
+
+Cell["and show", "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(2)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{"limit", "[", 
+        RowBox[{
+          RowBox[{
+            StyleBox[\(f\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None], "+", 
+            StyleBox[\(g\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], ",", 
+          RowBox[{
+            StyleBox[\(a\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None], "+", 
+            StyleBox[\(b\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}]}], "]"}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"2"],
+
+Cell[TextData[{
+  "Formula ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["1.1",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "1.1"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", by ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["Definition (limit:)",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "Definition (limit:)"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", implies:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(3)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox[
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["\[Epsilon]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{
+            StyleBox["\[Epsilon]",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ">", "0"}]], 
+        RowBox[{
+          UnderscriptBox["\[Exists]", 
+            RowBox[{
+              StyleBox["N",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{
+            UnderscriptBox[
+              UnderscriptBox["\[ForAll]", 
+                RowBox[{
+                  StyleBox["n",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], " "}]], 
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", 
+                StyleBox["N",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}]], 
+            RowBox[{"(", 
+              RowBox[{
+                RowBox[{"\[LeftBracketingBar]", 
+                  RowBox[{
+                    RowBox[{
+                      StyleBox[\(f\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None], "[", 
+                      StyleBox["n",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None], "]"}], "-", 
+                    StyleBox[\(a\_0\),
+                      FontWeight->"Plain",
+                      FontSlant->"Plain",
+                      Background->None]}], "\[RightBracketingBar]"}], "<", 
+                StyleBox["\[Epsilon]",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}], ")"}]}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"3"],
+
+Cell[TextData[{
+  "By ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["3",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "3"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", we can take an appropriate Skolem function such that"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(4)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox[
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["\[Epsilon]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{
+            StyleBox["\[Epsilon]",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ">", "0"}]], 
+        RowBox[{
+          UnderscriptBox[
+            UnderscriptBox["\[ForAll]", 
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], " "}]], 
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], "\[GreaterEqual]", 
+              RowBox[{
+                StyleBox[\(N\_0\),
+                  FontWeight->"Plain",
+                  FontSlant->"Plain",
+                  Background->None], "[", 
+                StyleBox["\[Epsilon]",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "]"}]}]], 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{"\[LeftBracketingBar]", 
+                RowBox[{
+                  RowBox[{
+                    StyleBox[\(f\_0\),
+                      FontWeight->"Plain",
+                      FontSlant->"Plain",
+                      Background->None], "[", 
+                    StyleBox["n",
+                      FontWeight->"Plain",
+                      FontSlant->"Italic",
+                      Background->None], "]"}], "-", 
+                  StyleBox[\(a\_0\),
+                    FontWeight->"Plain",
+                    FontSlant->"Plain",
+                    Background->None]}], "\[RightBracketingBar]"}], "<", 
+              StyleBox["\[Epsilon]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None]}], ")"}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[",", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"4"],
+
+Cell[TextData[{
+  "Formula ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["1.2",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "1.2"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", by ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["Definition (limit:)",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "Definition (limit:)"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", implies:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(5)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox[
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["\[Epsilon]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{
+            StyleBox["\[Epsilon]",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ">", "0"}]], 
+        RowBox[{
+          UnderscriptBox["\[Exists]", 
+            RowBox[{
+              StyleBox["N",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{
+            UnderscriptBox[
+              UnderscriptBox["\[ForAll]", 
+                RowBox[{
+                  StyleBox["n",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], " "}]], 
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", 
+                StyleBox["N",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}]], 
+            RowBox[{"(", 
+              RowBox[{
+                RowBox[{"\[LeftBracketingBar]", 
+                  RowBox[{
+                    RowBox[{
+                      StyleBox[\(g\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None], "[", 
+                      StyleBox["n",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None], "]"}], "-", 
+                    StyleBox[\(b\_0\),
+                      FontWeight->"Plain",
+                      FontSlant->"Plain",
+                      Background->None]}], "\[RightBracketingBar]"}], "<", 
+                StyleBox["\[Epsilon]",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}], ")"}]}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"5"],
+
+Cell[TextData[{
+  "By ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["5",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "5"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", we can take an appropriate Skolem function such that"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(6)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox[
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["\[Epsilon]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{
+            StyleBox["\[Epsilon]",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ">", "0"}]], 
+        RowBox[{
+          UnderscriptBox[
+            UnderscriptBox["\[ForAll]", 
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], " "}]], 
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], "\[GreaterEqual]", 
+              RowBox[{
+                StyleBox[\(N\_1\),
+                  FontWeight->"Plain",
+                  FontSlant->"Plain",
+                  Background->None], "[", 
+                StyleBox["\[Epsilon]",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "]"}]}]], 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{"\[LeftBracketingBar]", 
+                RowBox[{
+                  RowBox[{
+                    StyleBox[\(g\_0\),
+                      FontWeight->"Plain",
+                      FontSlant->"Plain",
+                      Background->None], "[", 
+                    StyleBox["n",
+                      FontWeight->"Plain",
+                      FontSlant->"Italic",
+                      Background->None], "]"}], "-", 
+                  StyleBox[\(b\_0\),
+                    FontWeight->"Plain",
+                    FontSlant->"Plain",
+                    Background->None]}], "\[RightBracketingBar]"}], "<", 
+              StyleBox["\[Epsilon]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None]}], ")"}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[",", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"6"],
+
+Cell[TextData[{
+  "Formula ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["2",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "2"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", using ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["Definition (limit:)",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "Definition (limit:)"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", is implied by:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(7)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox[
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["\[Epsilon]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{
+            StyleBox["\[Epsilon]",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], ">", "0"}]], 
+        RowBox[{
+          UnderscriptBox["\[Exists]", 
+            RowBox[{
+              StyleBox["N",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{
+            UnderscriptBox[
+              UnderscriptBox["\[ForAll]", 
+                RowBox[{
+                  StyleBox["n",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], " "}]], 
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", 
+                StyleBox["N",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}]], 
+            RowBox[{"(", 
+              RowBox[{
+                RowBox[{"\[LeftBracketingBar]", 
+                  RowBox[{
+                    RowBox[{
+                      RowBox[{"(", 
+                        RowBox[{
+                          StyleBox[\(f\_0\),
+                            FontWeight->"Plain",
+                            FontSlant->"Plain",
+                            Background->None], "+", 
+                          StyleBox[\(g\_0\),
+                            FontWeight->"Plain",
+                            FontSlant->"Plain",
+                            Background->None]}], ")"}], "[", 
+                      StyleBox["n",
+                        FontWeight->"Plain",
+                        FontSlant->"Italic",
+                        Background->None], "]"}], "-", 
+                    RowBox[{"(", 
+                      RowBox[{
+                        StyleBox[\(a\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "+", 
+                        StyleBox[\(b\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None]}], ")"}]}], 
+                  "\[RightBracketingBar]"}], "<", 
+                StyleBox["\[Epsilon]",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None]}], ")"}]}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"7"],
+
+Cell["We assume", "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(8)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        StyleBox[\(\[Epsilon]\_0\),
+          FontWeight->"Plain",
+          FontSlant->"Plain",
+          Background->None], ">", "0"}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[",", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 1],
+  CellTags->"8"],
+
+Cell["and show", "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(9)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox["\[Exists]", 
+          RowBox[{
+            StyleBox["N",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], " "}]], 
+        RowBox[{
+          UnderscriptBox[
+            UnderscriptBox["\[ForAll]", 
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], " "}]], 
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], "\[GreaterEqual]", 
+              StyleBox["N",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None]}]], 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{"\[LeftBracketingBar]", 
+                RowBox[{
+                  RowBox[{
+                    RowBox[{"(", 
+                      RowBox[{
+                        StyleBox[\(f\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "+", 
+                        StyleBox[\(g\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None]}], ")"}], "[", 
+                    StyleBox["n",
+                      FontWeight->"Plain",
+                      FontSlant->"Italic",
+                      Background->None], "]"}], "-", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      StyleBox[\(a\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None], "+", 
+                      StyleBox[\(b\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None]}], ")"}]}], 
+                "\[RightBracketingBar]"}], "<", 
+              StyleBox[\(\[Epsilon]\_0\),
+                FontWeight->"Plain",
+                FontSlant->"Plain",
+                Background->None]}], ")"}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"9"],
+
+Cell[TextData[{
+  "We have to find ",
+  Cell[BoxData[
+      \(\(N\^*\)\)], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3}],
+  "such that"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(10)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox["\[ForAll]", 
+          RowBox[{
+            StyleBox["n",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], " "}]], 
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], "\[GreaterEqual]", \(N\^*\)}], 
+            "\[Implies]", 
+            RowBox[{
+              RowBox[{"\[LeftBracketingBar]", 
+                RowBox[{
+                  RowBox[{
+                    RowBox[{"(", 
+                      RowBox[{
+                        StyleBox[\(f\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "+", 
+                        StyleBox[\(g\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None]}], ")"}], "[", 
+                    StyleBox["n",
+                      FontWeight->"Plain",
+                      FontSlant->"Italic",
+                      Background->None], "]"}], "-", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      StyleBox[\(a\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None], "+", 
+                      StyleBox[\(b\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None]}], ")"}]}], 
+                "\[RightBracketingBar]"}], "<", 
+              StyleBox[\(\[Epsilon]\_0\),
+                FontWeight->"Plain",
+                FontSlant->"Plain",
+                Background->None]}]}], ")"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"10"],
+
+Cell[TextData[{
+  "Formula ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["10",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "10"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", using ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["Definition (+:)",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "Definition (+:)"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", is implied by:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(11)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox["\[ForAll]", 
+          RowBox[{
+            StyleBox["n",
+              FontWeight->"Plain",
+              FontSlant->"Italic",
+              Background->None], " "}]], 
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], "\[GreaterEqual]", \(N\^*\)}], 
+            "\[Implies]", 
+            RowBox[{
+              RowBox[{"\[LeftBracketingBar]", 
+                RowBox[{
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{
+                        StyleBox[\(f\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "[", 
+                        StyleBox["n",
+                          FontWeight->"Plain",
+                          FontSlant->"Italic",
+                          Background->None], "]"}], "+", 
+                      RowBox[{
+                        StyleBox[\(g\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "[", 
+                        StyleBox["n",
+                          FontWeight->"Plain",
+                          FontSlant->"Italic",
+                          Background->None], "]"}]}], ")"}], "-", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      StyleBox[\(a\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None], "+", 
+                      StyleBox[\(b\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None]}], ")"}]}], 
+                "\[RightBracketingBar]"}], "<", 
+              StyleBox[\(\[Epsilon]\_0\),
+                FontWeight->"Plain",
+                FontSlant->"Plain",
+                Background->None]}]}], ")"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"11"],
+
+Cell[TextData[{
+  "Formula ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["11",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "11"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", using ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["Lemma (|+|)",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "Lemma (|+|)"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", is implied by:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(12)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        UnderscriptBox[
+          UnderscriptBox["\[Exists]", 
+            RowBox[{
+              StyleBox["\[Delta]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], ",", 
+              StyleBox["\[Epsilon]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None]}]], 
+          RowBox[{
+            RowBox[{
+              StyleBox["\[Delta]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], "+", 
+              StyleBox["\[Epsilon]",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None]}], "=", 
+            StyleBox[\(\[Epsilon]\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}]], 
+        RowBox[{
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", \(N\^*\)}], 
+              "\[Implies]", 
+              RowBox[{
+                RowBox[{
+                  RowBox[{"\[LeftBracketingBar]", 
+                    RowBox[{
+                      RowBox[{
+                        StyleBox[\(f\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "[", 
+                        StyleBox["n",
+                          FontWeight->"Plain",
+                          FontSlant->"Italic",
+                          Background->None], "]"}], "-", 
+                      StyleBox[\(a\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None]}], "\[RightBracketingBar]"}], "<", 
+                  StyleBox["\[Delta]",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}], "\[And]", 
+                RowBox[{
+                  RowBox[{"\[LeftBracketingBar]", 
+                    RowBox[{
+                      RowBox[{
+                        StyleBox[\(g\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "[", 
+                        StyleBox["n",
+                          FontWeight->"Plain",
+                          FontSlant->"Italic",
+                          Background->None], "]"}], "-", 
+                      StyleBox[\(b\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None]}], "\[RightBracketingBar]"}], "<", 
+                  StyleBox["\[Epsilon]",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None]}]}]}], ")"}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"12"],
+
+Cell[TextData[{
+  "We have to find ",
+  Cell[BoxData[
+      \(\[Delta]\^"*"\)], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+    LineSpacing->{1, 3}],
+  ", ",
+  Cell[BoxData[
+      \(\[Epsilon]\^"*"\)], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+    LineSpacing->{1, 3}],
+  "and ",
+  Cell[BoxData[
+      \(\(N\^*\)\)], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+    LineSpacing->{1, 3}],
+  "such that"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(13)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{\(\[Delta]\^"*" + \[Epsilon]\^"*"\), "=", 
+            StyleBox[\(\[Epsilon]\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], ")"}], "\[And]", 
+        RowBox[{
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", \(N\^*\)}], 
+              "\[Implies]", 
+              RowBox[{
+                RowBox[{
+                  RowBox[{"\[LeftBracketingBar]", 
+                    RowBox[{
+                      RowBox[{
+                        StyleBox[\(f\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "[", 
+                        StyleBox["n",
+                          FontWeight->"Plain",
+                          FontSlant->"Italic",
+                          Background->None], "]"}], "-", 
+                      StyleBox[\(a\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None]}], "\[RightBracketingBar]"}], 
+                  "<", \(\[Delta]\^"*"\)}], "\[And]", 
+                RowBox[{
+                  RowBox[{"\[LeftBracketingBar]", 
+                    RowBox[{
+                      RowBox[{
+                        StyleBox[\(g\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "[", 
+                        StyleBox["n",
+                          FontWeight->"Plain",
+                          FontSlant->"Italic",
+                          Background->None], "]"}], "-", 
+                      StyleBox[\(b\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None]}], "\[RightBracketingBar]"}], 
+                  "<", \(\[Epsilon]\^"*"\)}]}]}], ")"}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"13"],
+
+Cell[TextData[{
+  "Formula ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["13",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "13"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", using ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["6",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "6"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", is implied by:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{\(\[Delta]\^"*" + \[Epsilon]\^"*"\), "=", 
+            StyleBox[\(\[Epsilon]\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], ")"}], "\[And]", 
+        RowBox[{
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", \(N\^*\)}], 
+              "\[Implies]", 
+              RowBox[{\(\[Epsilon]\^"*" > 0\), "\[And]", 
+                RowBox[{
+                  StyleBox["n",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], "\[GreaterEqual]", 
+                  RowBox[{
+                    StyleBox[\(N\_1\),
+                      FontWeight->"Plain",
+                      FontSlant->"Plain",
+                      Background->None], "[", \(\[Epsilon]\^"*"\), "]"}]}], 
+                "\[And]", 
+                RowBox[{
+                  RowBox[{"\[LeftBracketingBar]", 
+                    RowBox[{
+                      RowBox[{
+                        StyleBox[\(f\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "[", 
+                        StyleBox["n",
+                          FontWeight->"Plain",
+                          FontSlant->"Italic",
+                          Background->None], "]"}], "-", 
+                      StyleBox[\(a\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None]}], "\[RightBracketingBar]"}], 
+                  "<", \(\[Delta]\^"*"\)}]}]}], ")"}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  ","
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  "which, using ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["4",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "4"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", is implied by:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{\(\[Delta]\^"*" + \[Epsilon]\^"*"\), "=", 
+            StyleBox[\(\[Epsilon]\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], ")"}], "\[And]", 
+        RowBox[{
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", \(N\^"*"\)}], 
+              "\[Implies]", 
+              
+              RowBox[{\(\[Delta]\^"*" > 0\), 
+                "\[And]", \(\[Epsilon]\^"*" > 0\), "\[And]", 
+                RowBox[{
+                  StyleBox["n",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], "\[GreaterEqual]", 
+                  RowBox[{
+                    StyleBox[\(N\_0\),
+                      FontWeight->"Plain",
+                      FontSlant->"Plain",
+                      Background->None], "[", \(\[Delta]\^"*"\), "]"}]}], 
+                "\[And]", 
+                RowBox[{
+                  StyleBox["n",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], "\[GreaterEqual]", 
+                  RowBox[{
+                    StyleBox[\(N\_1\),
+                      FontWeight->"Plain",
+                      FontSlant->"Plain",
+                      Background->None], "[", \(\[Epsilon]\^"*"\), 
+                    "]"}]}]}]}], ")"}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  ","
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  "which, using ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["Lemma (max)",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "Lemma (max)"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ", is implied by:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(14)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{\(\[Delta]\^"*" + \[Epsilon]\^"*"\), "=", 
+            StyleBox[\(\[Epsilon]\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], ")"}], "\[And]", 
+        RowBox[{
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", \(N\^"*"\)}], 
+              "\[Implies]", 
+              
+              RowBox[{\(\[Delta]\^"*" > 0\), 
+                "\[And]", \(\[Epsilon]\^"*" > 0\), "\[And]", 
+                RowBox[{
+                  StyleBox["n",
+                    FontWeight->"Plain",
+                    FontSlant->"Italic",
+                    Background->None], "\[GreaterEqual]", 
+                  RowBox[{"max", "[", 
+                    RowBox[{
+                      RowBox[{
+                        StyleBox[\(N\_0\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "[", \(\[Delta]\^"*"\), "]"}], 
+                      ",", 
+                      RowBox[{
+                        StyleBox[\(N\_1\),
+                          FontWeight->"Plain",
+                          FontSlant->"Plain",
+                          Background->None], "[", \(\[Epsilon]\^"*"\), 
+                        "]"}]}], "]"}]}]}]}], ")"}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"14"],
+
+Cell[TextData[{
+  "Formula ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["14",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "14"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  " is implied by:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(15)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{\(\[Delta]\^"*" + \[Epsilon]\^"*"\), "=", 
+            StyleBox[\(\[Epsilon]\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], ")"}], "\[And]", \(\[Delta]\^"*" > 0\), 
+        "\[And]", \(\[Epsilon]\^"*" > 0\), "\[And]", 
+        RowBox[{
+          UnderscriptBox["\[ForAll]", 
+            RowBox[{
+              StyleBox["n",
+                FontWeight->"Plain",
+                FontSlant->"Italic",
+                Background->None], " "}]], 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", \(N\^"*"\)}], 
+              "\[Implies]", 
+              RowBox[{
+                StyleBox["n",
+                  FontWeight->"Plain",
+                  FontSlant->"Italic",
+                  Background->None], "\[GreaterEqual]", 
+                RowBox[{"max", "[", 
+                  RowBox[{
+                    RowBox[{
+                      StyleBox[\(N\_0\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None], "[", \(\[Delta]\^"*"\), "]"}], ",",
+                     
+                    RowBox[{
+                      StyleBox[\(N\_1\),
+                        FontWeight->"Plain",
+                        FontSlant->"Plain",
+                        Background->None], "[", \(\[Epsilon]\^"*"\), "]"}]}], 
+                  "]"}]}]}], ")"}]}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[0.305882, 0.815686, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"15"],
+
+Cell[TextData[{
+  "Partially solving it, formula ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["15",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "15"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  " is implied by:"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{25, Inherited}],
+  StyleBox["(16)", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    LineBreakWithin->False,
+    FontColor->RGBColor[0, 0, 1]],
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{\(\[Delta]\^"*" + \[Epsilon]\^"*"\), "=", 
+            StyleBox[\(\[Epsilon]\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], ")"}], "\[And]", \(\[Delta]\^"*" > 0\), 
+        "\[And]", \(\[Epsilon]\^"*" > 0\), "\[And]", 
+        RowBox[{"(", 
+          RowBox[{\(N\^"*"\), "=", 
+            RowBox[{"max", "[", 
+              RowBox[{
+                RowBox[{
+                  StyleBox[\(N\_0\),
+                    FontWeight->"Plain",
+                    FontSlant->"Plain",
+                    Background->None], "[", \(\[Delta]\^"*"\), "]"}], ",", 
+                RowBox[{
+                  StyleBox[\(N\_1\),
+                    FontWeight->"Plain",
+                    FontSlant->"Plain",
+                    Background->None], "[", \(\[Epsilon]\^"*"\), "]"}]}], 
+              "]"}]}], ")"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]],
+  Cell[".", "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->GrayLevel[0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  FontColor->RGBColor[1, 0, 0],
+  CellTags->"16"],
+
+Cell["Now,", "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{\(\[Delta]\^"*" + \[Epsilon]\^"*"\), "=", 
+            StyleBox[\(\[Epsilon]\_0\),
+              FontWeight->"Plain",
+              FontSlant->"Plain",
+              Background->None]}], ")"}], "\[And]", \(\[Delta]\^"*" > 0\), 
+        "\[And]", \(\[Epsilon]\^"*" > 0\)}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[1, 0, 0]]
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  "can be solved for ",
+  Cell[BoxData[
+      \(\[Delta]\^"*"\)], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+    LineSpacing->{1, 3}],
+  " and ",
+  Cell[BoxData[
+      \(\[Epsilon]\^"*"\)], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+    LineSpacing->{1, 3}],
+  " by a call to Collins",
+  "\[CloseCurlyQuote]",
+  " CAD method yielding the solution"
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{"0", "<", \(\[Delta]\^"*"\), "<", 
+        StyleBox[\(\[Epsilon]\_0\),
+          FontWeight->"Plain",
+          FontSlant->"Plain",
+          Background->None]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3}],
+  ","
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{\(\[Epsilon]\^"*"\), "\[LeftArrow]", 
+        RowBox[{
+          StyleBox[\(\[Epsilon]\_0\),
+            FontWeight->"Plain",
+            FontSlant->"Plain",
+            Background->None], "+", \(\(-1\)*\[Delta]\^"*"\)}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3}],
+  "."
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell["Let us take", "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  Cell["", "Text",
+    CellSize->{15, Inherited}],
+  Cell[BoxData[
+      RowBox[{\(N\^*\), "\[LeftArrow]", 
+        RowBox[{"max", "[", 
+          RowBox[{
+            RowBox[{
+              StyleBox[\(N\_0\),
+                FontWeight->"Plain",
+                FontSlant->"Plain",
+                Background->None], "[", \(\[Delta]\^"*"\), "]"}], ",", 
+            RowBox[{
+              StyleBox[\(N\_1\),
+                FontWeight->"Plain",
+                FontSlant->"Plain",
+                Background->None], "[", 
+              RowBox[{
+                StyleBox[\(\[Epsilon]\_0\),
+                  FontWeight->"Plain",
+                  FontSlant->"Plain",
+                  Background->None], "+", \(\(-1\)*\[Delta]\^"*"\)}], "]"}]}],
+           "]"}]}]], "Text",
+    CellMargins->{{12, 10}, {7, 7}},
+    CellBracketOptions->{"Color"->RGBColor[0.705882, 0.054902, 0.611765]},
+    LineSpacing->{1, 3}],
+  "."
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]],
+
+Cell[TextData[{
+  "Formula ",
+  StyleBox["(", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  ButtonBox["16",
+    ButtonFunction:>(
+      Theorema`Provers`Common`BasicProofCells`Private`ExtractTaggedCell[ 
+      "16"]&),
+    ButtonEvaluator->Automatic,
+    ButtonStyle->"Hyperlink"],
+  StyleBox[")", "Text",
+    CellMargins->{{20, 30}, {7, 7}},
+    LineSpacing->{1, 3},
+    FontColor->RGBColor[0, 0, 1]],
+  " is solved. Hence, we are done."
+}], "Text",
+  CellMargins->{{89, 10}, {7, 7}},
+  CellBracketOptions->{"Color"->RGBColor[1, 0.647059, 0]},
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text",
+  FontColor->GrayLevel[0]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Perspective", "Section"],
+
+Cell["\<\
+Theorema provides a common frame for proving, solving, and \
+simplifying (computing). More and more provers, solvers, and simplifiers are \
+currently added to Theorema and links to other proving systems are provided \
+from within Theorema. The user can introduce new mathematical notions and \
+experiment with the notions by computing examples. He can formulate \
+conjectures and try to prove them by using the provers from the Theorema \
+prover library. He can also study the question under which assumptions a \
+given conjecture is true, and he can compose theories as hierarchical \
+knowledge bases. Nonalgorithmic theorems and algorithms are expressed in one \
+common language frame. For structuring towers of algorithmic mathematical \
+domains, Theorema also provides the functor construct. \
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["\<\
+While, in the present version, the prover library of Theorema \
+cannot be changed by the user, the next version of Theorema is intended to \
+provide language constructs that will allow the user to create, with little \
+effort, new provers, solvers, and simplifiers from the ones provided in the \
+Theorema library.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Acknowledgment", "Section"],
+
+Cell["\<\
+The Theorema project is sponsored by Project SFB 1302 of the \
+Austrian Science Foundation (FWF) and Project Prove of the Upper Austrian \
+Government.\
+\>", "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["About the Author", "SectionAboutAuthor"],
+
+Cell["\<\
+Bruno Buchberger is professor of computer mathematics at the \
+Research Institute for Symbolic Computation (RISC) of the Johannes Kepler \
+University in Linz, Austria. He is the founder of RISC and the founding \
+editor of the Journal of Symbolic Computation. His main research contribution \
+is the theory of Gr\[ODoubleDot]bner bases. His current research interest is \
+the Theorema Project.\
+\>", "TextAboutAuthor"]
+}, Closed]]
+}, Open  ]]
+},
+FrontEndVersion->"4.1 for Macintosh",
+ScreenRectangle->{{0, 1152}, {0, 850}},
+AutoGeneratedPackage->None,
+ScreenStyleEnvironment->"Working",
+WindowToolbars->{},
+WindowSize->{496, 553},
+WindowMargins->{{14, Automatic}, {Automatic, 99}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+PageHeaders->{{
+  Inherited, Inherited, Cell[ "Bruno Buchberger", "Header"]}, {
+    Cell[ "Theorema: A Proving System Based on Mathematica ", "Header"], 
+      Inherited, Inherited}},
+PageFooters->{{Cell[ 
+        TextData[ {"The Mathematica Journal  ", 
+          StyleBox[ "8", FontWeight -> "Bold"], 
+          ":2 (2001) \[Copyright] 2001 Wolfram Media, Inc."}], "Footer"], 
+      Inherited, Inherited}, {Inherited, Inherited, Cell[ 
+        TextData[ {"The Mathematica Journal  ", 
+          StyleBox[ "8", FontWeight -> "Bold"], 
+          ":2 (2001) \[Copyright] 2001 Wolfram Media, Inc."}], "Footer"]}},
+PrintingOptions->{"PrintCellBrackets"->False,
+"PrintRegistrationMarks"->False,
+"PrintMultipleHorizontalPages"->False,
+"FirstPageHeader"->False,
+"FacingPages"->True},
+Magnification->1,
+StyleDefinitions -> Notebook[{
+  
+  Cell[CellGroupData[{
+  Cell[TextData[{
+    "Style Definitions for \n",
+    StyleBox["The Mathematica Journal;\nProduction Environment",
+      FontSlant->"Italic"]
+  }], "Subtitle",
+    CellMargins->{{0, Inherited}, {Inherited, 0}},
+    CellFrameMargins->{{20, 4}, {8, 20}},
+    FontSize->36,
+    FontWeight->"Bold",
+    FontColor->GrayLevel[1],
+    Background->GrayLevel[0]],
+  
+  Cell["\<\
+
+v8.2, TMJv4Style.nb
+
+with mathematica 4.0; Production Environment excluded,
+
+4/25/2001
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Style Environment Names", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell[StyleData[All, "Working"],
+    ScreenStyleEnvironment->"Working",
+    PrintingStyleEnvironment->"Printout",
+    CellBracketOptions->{"Color"->RGBColor[0.115343, 0.350561, 0.362966]},
+    ShowCellLabel->True,
+    CellFrameLabelMargins->6,
+    ScriptMinSize->9],
+  
+  Cell[StyleData[All, "Presentation"],
+    ScreenStyleEnvironment->"Presentation",
+    PrintingStyleEnvironment->"Printout",
+    Magnification->1.25],
+  
+  Cell[StyleData[All, "HTML"],
+    ScreenStyleEnvironment->"HTML",
+    PrintingStyleEnvironment->"HTML",
+    PrintingOptions->{"PrintingMargins"->{{0, 0}, {82, 56}},
+    "PageSize"->{490, 720}},
+    ShowCellBracket->True,
+    CellFrameLabelMargins->6,
+    ScriptMinSize->9],
+  
+  Cell[StyleData[All, "Printout"],
+    ScreenStyleEnvironment->"Printout",
+    PrintingStyleEnvironment->"Printout",
+    PageWidth->PaperWidth,
+    PrintingOptions->{"PrintingMargins"->{{24, 74}, {72, 72}},
+    "PrintRegistrationMarks"->False,
+    "FirstPageHeader"->False,
+    "FacingPages"->True},
+    ShowCellBracket->False]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Notebook Options", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell["\<\
+
+The options defined for the style below will be used at the Notebook level.
+\
+\>", "Text"],
+  
+  Cell[StyleData["Notebook"],
+    PageHeaders->{{Cell[ 
+            TextData[ {
+              CounterBox[ "Page"]}], "PageNumber"], Inherited, Cell[ 
+          "Author(s)", "Header"]}, {
+        Cell[ "Article Title", "Header"], Inherited, Cell[ 
+            TextData[ {
+              CounterBox[ "Page"]}], "PageNumber"]}},
+    PageFooters->{{Cell[ 
+            TextData[ {"The Mathematica Journal  ", 
+              StyleBox[ "volume", FontWeight -> "Bold"], 
+              ":issue (year) \[Copyright] year Wolfram Media, Inc."}], 
+            "Footer"], Inherited, Cell[ 
+            TextData[ {
+              ValueBox[ "FileName"], 
+              ValueBox[ "Date"]}], "Footer"]}, {Cell[ 
+            TextData[ {
+              ValueBox[ "FileName"], 
+              ValueBox[ "Date"]}], "Footer"], Inherited, Cell[ 
+            TextData[ {"The Mathematica Journal  ", 
+              StyleBox[ "volume", FontWeight -> "Bold"], 
+              ":issue (year) \[Copyright] year Wolfram Media, Inc."}], 
+            "Footer"]}},
+    CellLabelAutoDelete->True,
+    CellFrameLabelMargins->6,
+    HyphenationOptions->{"HyphenationCharacter"->"-"},
+    StyleMenuListing->None]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Styles for Headings", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell["\<\
+
+Each notebook should contain a Title cell. Title resets all cell CounterBox 
+values to zero (except Title).
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Title"],
+    ShowCellBracket->True,
+    CellMargins->{{0, 25}, {Inherited, 0}},
+    CellGroupingRules->{"TitleGrouping", 0},
+    PageBreakBelow->False,
+    CellFrameMargins->{{55, 4}, {8, 20}},
+    LineSpacing->{1.125, 0},
+    CounterIncrements->"Title",
+    CounterAssignments->{{"Subtitle", 0}, {"Section", 0}, {"Subsection", 0}, {
+        "Subsubsection", 0}, {"List", 0}, {"NumberedFigure", 0}, {
+        "NumberedTable", 0}, {"NumberedProgram", 0}, {"Equation", 0}, {
+        "Text", 0}, {"SmallText", 0}, {"Reference", 0}},
+    FontFamily->"Times",
+    FontSize->36,
+    FontSlant->"Italic",
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.699931, 0.198672, 0.198672]],
+  
+  Cell[StyleData["Title", "Presentation"],
+    FontSize->40,
+    Background->RGBColor[0.699931, 0.198672, 0.198672]],
+  
+  Cell[StyleData["Title", "HTML"],
+    CellMargins->{{54, 25}, {Inherited, 0}},
+    FontColor->GrayLevel[0],
+    Background->GrayLevel[1]],
+  
+  Cell[StyleData["Title", "Printout"],
+    CellMargins->{{66, 72}, {14, 0}},
+    CellFrameMargins->False,
+    FontColor->GrayLevel[0],
+    Background->None]
+  }, Closed]],
+  
+  Cell["\<\
+
+Subtitle is an optional cell, follows Title, precedes Author.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Subtitle"],
+    CellMargins->{{54, 25}, {0, 10}},
+    CellGroupingRules->{"TitleGrouping", 10},
+    PageBreakBelow->False,
+    LineSpacing->{1.25, 0},
+    CounterIncrements->"Subtitle",
+    FontFamily->"Times",
+    FontSize->24,
+    FontSlant->"Italic"],
+  
+  Cell[StyleData["Subtitle", "Presentation"]],
+  
+  Cell[StyleData["Subtitle", "HTML"],
+    CellMargins->{{54, 25}, {10, 10}},
+    FontSize->12],
+  
+  Cell[StyleData["Subtitle", "Printout"],
+    CellMargins->{{72, 72}, {12, 2}},
+    FontSize->12,
+    FontSlant->"Italic"]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Subsubtitle"],
+    CellMargins->{{54, 25}, {0, 10}},
+    CellGroupingRules->{"TitleGrouping", 10},
+    PageBreakBelow->False,
+    LineSpacing->{1, 0},
+    CounterIncrements->"Subtitle",
+    FontFamily->"Times",
+    FontSize->18,
+    FontSlant->"Italic"],
+  
+  Cell[StyleData["Subsubtitle", "Presentation"]],
+  
+  Cell[StyleData["Subsubtitle", "HTML"],
+    CellMargins->{{54, 0}, {Inherited, Inherited}},
+    FontSize->16],
+  
+  Cell[StyleData["Subsubtitle", "Printout"],
+    CellMargins->{{72, 72}, {6, 2}},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell["\<\
+
+SectionFirst should be used for the first section level heading in a 
+notebook. SectionFirst sets the following counter values to zero: Subsection 
+and Subsubsection. Sets Section counter value to 1. If not preceded by 
+Abstract space above should be adjusted to 18.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["SectionFirst"],
+    CellFrame->{{0, 0}, {0, 2}},
+    CellDingbat->"\[FilledSquare]",
+    CellMargins->{{54, 25}, {10, 30}},
+    CellGroupingRules->{"SectionGrouping", 40},
+    PageBreakBelow->False,
+    CellFrameMargins->2,
+    CellFrameColor->RGBColor[0.668009, 0.669383, 0.345068],
+    CounterIncrements->"Section",
+    CounterAssignments->{{"Section", 0}, {"Subsection", 0}, {
+        "Subsubsection", 0}},
+    FontFamily->"Helvetica",
+    FontSize->18,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["SectionFirst", "Presentation"],
+    CellFrame->{{0, 0}, {0, 3}},
+    CellFrameMargins->{{0, 0}, {0, 4}},
+    CellFrameColor->RGBColor[0.668009, 0.669383, 0.345068]],
+  
+  Cell[StyleData["SectionFirst", "HTML"],
+    CellFrame->{{0, 0}, {0, 3}},
+    CellMargins->{{54, 24}, {15, 15}},
+    CellFrameMargins->{{0, 0}, {0, 5}},
+    CellFrameColor->GrayLevel[0],
+    FontSize->14],
+  
+  Cell[StyleData["SectionFirst", "Printout"],
+    CellFrame->False,
+    CellMargins->{{72, 72}, {2, 30}},
+    CellFrameMargins->{{0, 0}, {0, 5}},
+    CellFrameColor->GrayLevel[0],
+    FontSize->12]
+  }, Closed]],
+  
+  Cell["\<\
+
+Section should be used for subsequent Section level headings. Sets counter 
+values Subsection and Subsubsection to zero.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Section"],
+    CellFrame->{{0, 0}, {0, 0.5}},
+    CellDingbat->"\[FilledSquare]",
+    CellMargins->{{54, 25}, {10, 30}},
+    CellGroupingRules->{"SectionGrouping", 40},
+    PageBreakBelow->False,
+    CellFrameMargins->2,
+    CellFrameColor->RGBColor[0.668009, 0.669383, 0.345068],
+    CounterIncrements->"Section",
+    CounterAssignments->{{"Subsection", 0}, {"Subsubsection", 0}},
+    FontFamily->"Helvetica",
+    FontSize->18,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["Section", "Presentation"],
+    CellFrameMargins->{{0, 0}, {0, 4}}],
+  
+  Cell[StyleData["Section", "HTML"],
+    CellMargins->{{54, 24}, {3, 15}},
+    CellFrameMargins->{{0, 0}, {0, 5}},
+    CellFrameColor->GrayLevel[0],
+    FontSize->14],
+  
+  Cell[StyleData["Section", "Printout"],
+    CellFrame->False,
+    CellMargins->{{72, 72}, {2, 30}},
+    FontSize->12]
+  }, Closed]],
+  
+  Cell["\<\
+
+Subsection is an optional style. Sets counter Subsubsection to zero.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Subsection"],
+    CellDingbat->"\[EmptySquare]",
+    CellMargins->{{54, 25}, {10, 26}},
+    CellGroupingRules->{"SectionGrouping", 50},
+    PageBreakBelow->False,
+    CounterIncrements->"Subsection",
+    CounterAssignments->{{"Subsubsection", 0}},
+    FontFamily->"Helvetica",
+    FontSize->14,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["Subsection", "Presentation"]],
+  
+  Cell[StyleData["Subsection", "HTML"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    FontSize->12],
+  
+  Cell[StyleData["Subsection", "Printout"],
+    CellDingbat->"\[EmptySquare]",
+    CellMargins->{{72, 72}, {2, 16}},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell["\<\
+
+SubsectionNoSpace is an optional style, it is to be used if a subsection 
+level heading directly follows a section level heading. Sets counter 
+Subsubsection to zero.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["SubsectionNoSpace"],
+    CellDingbat->"\[EmptySquare]",
+    CellMargins->{{54, 25}, {2, 2}},
+    CellGroupingRules->{"SectionGrouping", 50},
+    PageBreakBelow->False,
+    CounterIncrements->"Subsection",
+    CounterAssignments->{{"Subsubsection", 0}},
+    FontFamily->"Helvetica",
+    FontSize->14,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["SubsectionNoSpace", "Presentation"]],
+  
+  Cell[StyleData["SubsectionNoSpace", "HTML"],
+    CellMargins->{{54, 24}, {2, 2}},
+    FontSize->12],
+  
+  Cell[StyleData["SubsectionNoSpace", "Printout"],
+    CellDingbat->"\[EmptySquare]",
+    CellMargins->{{72, 72}, {2, 2}},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Subsubsection"],
+    CellDingbat->"\[FilledSmallSquare]",
+    CellMargins->{{54, 25}, {6, 20}},
+    CellGroupingRules->{"SectionGrouping", 60},
+    PageBreakBelow->False,
+    CounterIncrements->"Subsubsection",
+    FontFamily->"Helvetica",
+    FontSize->12,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["Subsubsection", "Presentation"]],
+  
+  Cell[StyleData["Subsubsection", "HTML"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    FontSize->10],
+  
+  Cell[StyleData["Subsubsection", "Printout"],
+    CellDingbat->None,
+    CellMargins->{{72, 72}, {-4, 2}},
+    FontSize->9,
+    FontSlant->"Oblique"]
+  }, Closed]],
+  
+  Cell["\<\
+
+NoDingbat versions of headings used, for example, in the frontmatter.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["SectionNoDingbat"],
+    CellFrame->{{0, 0}, {0, 0.5}},
+    CellDingbat->None,
+    CellMargins->{{54, 25}, {10, 30}},
+    CellGroupingRules->{"SectionGrouping", 40},
+    PageBreakBelow->False,
+    CellFrameMargins->2,
+    CellFrameColor->RGBColor[0.668009, 0.669383, 0.345068],
+    CounterIncrements->"Section",
+    CounterAssignments->{{"Subsection", 0}, {"Subsubsection", 0}},
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->18,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["SectionNoDingbat", "Presentation"],
+    CellFrameMargins->{{0, 0}, {0, 4}}],
+  
+  Cell[StyleData["SectionNoDingbat", "HTML"],
+    CellMargins->{{54, 24}, {3, 15}},
+    CellFrameMargins->{{0, 0}, {0, 5}},
+    CellFrameColor->GrayLevel[0],
+    FontSize->14],
+  
+  Cell[StyleData["SectionNoDingbat", "Printout"],
+    CellFrame->False,
+    CellMargins->{{72, 72}, {2, 30}},
+    CellFrameColor->GrayLevel[0],
+    FontSize->12]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["SubsectionNoDingbat"],
+    CellDingbat->None,
+    CellMargins->{{54, 25}, {10, 26}},
+    CellGroupingRules->{"SectionGrouping", 50},
+    PageBreakBelow->False,
+    CounterIncrements->"Subsection",
+    CounterAssignments->{{"Subsubsection", 0}},
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->14,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["SubsectionNoDingbat", "Presentation"]],
+  
+  Cell[StyleData["SubsectionNoDingbat", "HTML"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    FontSize->12],
+  
+  Cell[StyleData["SubsectionNoDingbat", "Printout"],
+    CellMargins->{{72, 72}, {2, 16}},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["SubsectionNoSpaceNoDingbat"],
+    CellMargins->{{54, 25}, {2, 2}},
+    CellGroupingRules->{"SectionGrouping", 50},
+    PageBreakBelow->False,
+    CounterIncrements->"Subsection",
+    CounterAssignments->{{"Subsubsection", 0}},
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->14,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["SubsectionNoSpaceNoDingbat", "Presentation"]],
+  
+  Cell[StyleData["SubsectionNoSpaceNoDingbat", "HTML"],
+    CellMargins->{{54, 24}, {2, 2}},
+    FontSize->12],
+  
+  Cell[StyleData["SubsectionNoSpaceNoDingbat", "Printout"],
+    CellMargins->{{72, 72}, {2, 2}},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["SubsubsectionNoDingbat"],
+    CellMargins->{{54, 25}, {6, 20}},
+    CellGroupingRules->{"SectionGrouping", 60},
+    PageBreakBelow->False,
+    CounterIncrements->"Subsubsection",
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->12,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["SubsubsectionNoDingbat", "Presentation"]],
+  
+  Cell[StyleData["SubsubsectionNoDingbat", "HTML"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    FontSize->10],
+  
+  Cell[StyleData["SubsubsectionNoDingbat", "Printout"],
+    CellMargins->{{72, 72}, {-4, 2}},
+    FontSize->9,
+    FontSlant->"Oblique"]
+  }, Closed]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Styles for Body Text", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Text"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    LineSpacing->{1, 4},
+    CounterIncrements->"Text",
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["Text", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["Text", "HTML"],
+    CellMargins->{{54, 24}, {Inherited, 0}},
+    LineSpacing->{1, 3},
+    FontSize->10],
+  
+  Cell[StyleData["Text", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    LineSpacing->{0, 12},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["SmallText"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    LineSpacing->{1, 4},
+    CounterIncrements->"SmallText",
+    FontFamily->"Times",
+    FontSize->10],
+  
+  Cell[StyleData["SmallText", "Presentation"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    FontSize->12],
+  
+  Cell[StyleData["SmallText", "HTML"],
+    CellMargins->{{54, 24}, {Inherited, 0}},
+    LineSpacing->{1, 3},
+    FontSize->9],
+  
+  Cell[StyleData["SmallText", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    LineSpacing->{0, 11},
+    FontSize->9]
+  }, Closed]],
+  
+  Cell["\<\
+
+Quote should be used when displaying text previously published elsewhere.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Quote"],
+    CellMargins->{{70, 40}, {Inherited, Inherited}},
+    LineSpacing->{1, 3},
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["Quote", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["Quote", "HTML"],
+    CellMargins->{{70, 40}, {Inherited, Inherited}},
+    FontSize->10],
+  
+  Cell[StyleData["Quote", "Printout"],
+    CellMargins->{{96, 96}, {2, 4}},
+    LineSpacing->{0, 12},
+    FontSize->10]
+  }, Closed]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Styles for Input, Output, and Graphics", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell["\<\
+
+The cells in this section define styles used for input and output to the 
+kernel.  Be careful when modifying, renaming, or removing these styles, 
+because the front end associates special meanings with these style names.
+\
+\>", "Text"],
+  
+  Cell[TextData[{
+    "Input cell style to be used for ",
+    StyleBox["Mathematica",
+      FontSlant->"Italic"],
+    " input statements that are followed by either Output or GraphicsOnly \
+cell  styles. Sets ",
+    "DefaultFormatType->DefaultInputFormatType."
+  }], "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Input"],
+    CellFrame->{{0.25, 0.25}, {0, 0.25}},
+    CellMargins->{{54, 24}, {-1, 10}},
+    Evaluatable->True,
+    CellGroupingRules->"InputGrouping",
+    CellHorizontalScrolling->True,
+    PageBreakWithin->False,
+    GroupPageBreakWithin->False,
+    CellLabelAutoDelete->True,
+    CellLabelMargins->{{23, Inherited}, {Inherited, Inherited}},
+    DefaultFormatType->DefaultInputFormatType,
+    AutoItalicWords->{},
+    ShowStringCharacters->True,
+    NumberMarks->True,
+    CounterIncrements->"Input",
+    FontFamily->"Courier",
+    FontSize->12,
+    FontWeight->"Bold",
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["Input", "Presentation"],
+    FontSize->14,
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["Input", "HTML"],
+    CellFrame->False,
+    CellMargins->{{0, 0}, {10, 10}},
+    Background->None],
+  
+  Cell[StyleData["Input", "Printout"],
+    CellFrame->False,
+    CellMargins->{{96, 72}, {2, 4}},
+    PrivateEvaluationOptions->{"OutputFormPageWidth"->342},
+    CellFrameMargins->False,
+    LineSpacing->{1.25, 0},
+    FontSize->9,
+    Background->None]
+  }, Closed]],
+  
+  Cell[TextData[{
+    "InputOnly cell style to be used for ",
+    StyleBox["Mathematica",
+      FontSlant->"Italic"],
+    " input statements that produce no output or graphic. See Program cell  \
+style for presenting segments of code that do not evaluate."
+  }], "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["InputOnly"],
+    CellFrame->True,
+    CellMargins->{{54, 24}, {15, 10}},
+    Evaluatable->True,
+    CellGroupingRules->"InputGrouping",
+    CellHorizontalScrolling->True,
+    PageBreakWithin->False,
+    GroupPageBreakWithin->False,
+    CellLabelAutoDelete->True,
+    CellLabelMargins->{{23, Inherited}, {Inherited, Inherited}},
+    DefaultFormatType->DefaultInputFormatType,
+    AutoItalicWords->{},
+    ShowStringCharacters->True,
+    NumberMarks->True,
+    CounterIncrements->"Input",
+    FontFamily->"Courier",
+    FontSize->12,
+    FontWeight->"Bold",
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["InputOnly", "Presentation"],
+    CellFrameMargins->8,
+    FontSize->14,
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["InputOnly", "HTML"],
+    CellFrame->False,
+    CellMargins->{{0, 0}, {10, 10}},
+    CellFrameMargins->8,
+    Background->None],
+  
+  Cell[StyleData["InputOnly", "Printout"],
+    CellFrame->False,
+    CellMargins->{{96, 72}, {2, 4}},
+    PrivateEvaluationOptions->{"OutputFormPageWidth"->342},
+    LineSpacing->{1.25, 0},
+    FontSize->9,
+    Background->None]
+  }, Closed]],
+  
+  Cell[TextData[{
+    "Output cell style is usually generated by the ",
+    StyleBox["Mathematica",
+      FontSlant->"Italic"],
+    " kernel. To follow Input cell style. Sets  \
+DefaultFormatType->DefaultOutputFormatType."
+  }], "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Output"],
+    CellFrame->{{0.25, 0.25}, {0.25, 0}},
+    CellMargins->{{54, 24}, {10, 0}},
+    CellEditDuplicate->True,
+    CellGroupingRules->"OutputGrouping",
+    CellHorizontalScrolling->True,
+    PageBreakWithin->False,
+    GroupPageBreakWithin->False,
+    GeneratedCell->True,
+    CellAutoOverwrite->True,
+    CellLabelAutoDelete->True,
+    CellLabelMargins->{{23, Inherited}, {Inherited, Inherited}},
+    DefaultFormatType->DefaultOutputFormatType,
+    AutoItalicWords->{},
+    CounterIncrements->"Output",
+    StyleMenuListing->None,
+    FontFamily->"Courier",
+    FontSize->12,
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["Output", "Presentation"],
+    FontSize->14,
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["Output", "HTML"],
+    CellFrame->False,
+    CellMargins->{{0, 0}, {10, 0}},
+    Background->None],
+  
+  Cell[StyleData["Output", "Printout"],
+    CellFrame->False,
+    CellMargins->{{96, 72}, {2, 4}},
+    CellLabelMargins->{{72, Inherited}, {Inherited, Inherited}},
+    LineSpacing->{1.25, 0},
+    FontSize->9,
+    Background->None]
+  }, Closed]],
+  
+  Cell[TextData[{
+    "Message cells are usually generated by the ",
+    StyleBox["Mathematica",
+      FontSlant->"Italic"],
+    " kernel, typically messages emitted during evaluation.To follow Input \
+cell  style, precede Output cell style."
+  }], "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Message"],
+    CellFrame->{{0.25, 0.25}, {0, 0}},
+    CellDingbat->"\[WarningSign]",
+    CellMargins->{{54, 24}, {0, 0}},
+    CellGroupingRules->"OutputGrouping",
+    PageBreakWithin->False,
+    GroupPageBreakWithin->False,
+    GeneratedCell->True,
+    CellAutoOverwrite->True,
+    ShowCellLabel->False,
+    CellLabelMargins->{{23, Inherited}, {Inherited, Inherited}},
+    CellFrameLabelMargins->-9,
+    DefaultFormatType->DefaultOutputFormatType,
+    AutoItalicWords->{},
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->10,
+    FontColor->RGBColor[0, 0, 1],
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["Message", "Presentation"],
+    FontSize->12],
+  
+  Cell[StyleData["Message", "HTML"],
+    CellFrame->False,
+    CellMargins->{{0, 0}, {0, 0}},
+    CellFrameLabelMargins->8,
+    Background->None],
+  
+  Cell[StyleData["Message", "Printout"],
+    CellFrame->True,
+    CellDingbat->None,
+    CellMargins->{{96, 72}, {2, 4}},
+    PrivateEvaluationOptions->{"OutputFormPageWidth"->342},
+    CellFrameMargins->4,
+    LineSpacing->{0, 10},
+    FontSize->8,
+    FontColor->GrayLevel[0],
+    Background->None]
+  }, Closed]],
+  
+  Cell[TextData[{
+    "Print cells are usually generated by the ",
+    StyleBox["Mathematica",
+      FontSlant->"Italic"],
+    " kernel, typically from such commands as ?Plot."
+  }], "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Print"],
+    CellFrame->True,
+    CellMargins->{{54, 24}, {1, 6}},
+    CellGroupingRules->"OutputGrouping",
+    CellHorizontalScrolling->True,
+    PageBreakWithin->False,
+    GroupPageBreakWithin->False,
+    GeneratedCell->True,
+    CellAutoOverwrite->True,
+    ShowCellLabel->False,
+    CellLabelMargins->{{23, Inherited}, {Inherited, Inherited}},
+    CellFrameColor->RGBColor[0.718318, 0.694575, 0.474449],
+    DefaultFormatType->DefaultOutputFormatType,
+    AutoItalicWords->{},
+    StyleMenuListing->None,
+    FontSize->10],
+  
+  Cell[StyleData["Print", "Presentation"],
+    CellFrame->2,
+    FontSize->12,
+    Background->None],
+  
+  Cell[StyleData["Print", "HTML"],
+    CellMargins->{{0, 0}, {2, 6}},
+    CellFrameColor->GrayLevel[0]],
+  
+  Cell[StyleData["Print", "Printout"],
+    CellFrame->True,
+    CellMargins->{{96, 72}, {2, 4}},
+    PrivateEvaluationOptions->{"OutputFormPageWidth"->342},
+    CellFrameMargins->4,
+    CellFrameColor->GrayLevel[0],
+    LineSpacing->{0, 11},
+    FontSize->9,
+    Background->None]
+  }, Closed]],
+  
+  Cell["\<\
+
+Graphics cell usually output by kernel. To be preceded by Input cell, 
+followed by Output cell.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Graphics"],
+    CellFrame->{{0.25, 0.25}, {0, 0}},
+    CellMargins->{{54, 24}, {0, 0}},
+    CellGroupingRules->"GraphicsGrouping",
+    CellHorizontalScrolling->True,
+    PageBreakWithin->False,
+    GeneratedCell->True,
+    CellAutoOverwrite->True,
+    ShowCellLabel->True,
+    CellLabelPositioning->Left,
+    CellLabelAutoDelete->True,
+    DefaultFormatType->DefaultOutputFormatType,
+    ImageMargins->{{30, 0}, {0, 0}},
+    StyleMenuListing->None,
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["Graphics", "Presentation"]],
+  
+  Cell[StyleData["Graphics", "HTML"],
+    CellFrame->False,
+    Background->None],
+  
+  Cell[StyleData["Graphics", "Printout"],
+    CellFrame->False,
+    CellMargins->{{96, 72}, {8, 10}},
+    LineSpacing->{0, 12},
+    ImageSize->{144, 144},
+    Background->None]
+  }, Closed]],
+  
+  Cell["\<\
+
+GraphicsOnly cell to follow Input cell, not followed by Output cell. Convert 
+Graphics cell to GraphicsOnly cell manually.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["GraphicsOnly"],
+    CellFrame->{{0.25, 0.25}, {0.25, 0}},
+    CellMargins->{{54, 24}, {10, 0}},
+    CellGroupingRules->"GraphicsGrouping",
+    CellHorizontalScrolling->True,
+    PageBreakWithin->False,
+    GeneratedCell->True,
+    CellAutoOverwrite->True,
+    ShowCellLabel->True,
+    CellLabelPositioning->Left,
+    CellLabelAutoDelete->True,
+    DefaultFormatType->DefaultOutputFormatType,
+    ImageMargins->{{30, 0}, {0, 0}},
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["GraphicsOnly", "Presentation"]],
+  
+  Cell[StyleData["GraphicsOnly", "HTML"],
+    CellFrame->False,
+    Background->None],
+  
+  Cell[StyleData["GraphicsOnly", "Printout"],
+    CellFrame->False,
+    CellMargins->{{96, 72}, {8, 10}},
+    LineSpacing->{0, 12},
+    ImageSize->{144, 144},
+    FontSize->10,
+    Background->None]
+  }, Closed]],
+  
+  Cell["\<\
+
+PictureGroup cell style used to group graphic cells that comprise an 
+animation.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["PictureGroup"],
+    CellFrame->{{0.25, 0.25}, {0.25, 0}},
+    CellMargins->{{54, 17}, {0, 0}},
+    CellGroupingRules->"GraphicsGrouping",
+    CellHorizontalScrolling->True,
+    PageBreakWithin->False,
+    ShowCellLabel->True,
+    CellLabelAutoDelete->True,
+    ImageMargins->{{30, 0}, {0, 0}},
+    StyleMenuListing->None,
+    Background->RGBColor[0.819455, 0.804242, 0.663142]],
+  
+  Cell[StyleData["PictureGroup", "Presentation"],
+    StyleMenuListing->None],
+  
+  Cell[StyleData["PictureGroup", "HTML"],
+    CellFrame->False,
+    StyleMenuListing->None,
+    Background->None],
+  
+  Cell[StyleData["PictureGroup", "Printout"],
+    CellFrame->False,
+    CellMargins->{{96, 72}, {8, 10}},
+    LineSpacing->{0, 12},
+    ImageSize->{144, 144},
+    FontSize->10,
+    Background->None]
+  }, Closed]],
+  
+  Cell[TextData[{
+    "PlacedGraphics cell style to be used when pasting in a graphic from  \
+another application or when presenting a graphic not associated with ",
+    StyleBox["Mathematica",
+      FontSlant->"Italic"],
+    " input. May be followed by NumberedFigureCaption."
+  }], "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["PlacedGraphics"],
+    CellFrame->False,
+    CellMargins->{{54, 24}, {10, 10}},
+    CellGroupingRules->"GraphicsGrouping",
+    CellHorizontalScrolling->True,
+    PageBreakWithin->False,
+    ShowCellLabel->False,
+    CellLabelAutoDelete->True,
+    TextAlignment->Center],
+  
+  Cell[StyleData["PlacedGraphics", "Presentation"]],
+  
+  Cell[StyleData["PlacedGraphics", "HTML"]],
+  
+  Cell[StyleData["PlacedGraphics", "Printout"],
+    CellMargins->{{72, 72}, {8, 10}},
+    LineSpacing->{0, 12},
+    FontSize->10,
+    Background->None]
+  }, Closed]],
+  
+  Cell["\<\
+
+CellLabel style definition controls how labels appear when a cell has 
+ShowCellLabels->True.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["CellLabel"],
+    CellMargins->{{5, Inherited}, {Inherited, Inherited}},
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->8,
+    FontSlant->"Oblique",
+    FontColor->RGBColor[0.115343, 0.350561, 0.362966]],
+  
+  Cell[StyleData["CellLabel", "Presentation"],
+    FontSize->10,
+    FontColor->RGBColor[0.115343, 0.350561, 0.362966]],
+  
+  Cell[StyleData["CellLabel", "HTML"]],
+  
+  Cell[StyleData["CellLabel", "Printout"],
+    LineSpacing->{1, 0},
+    FontSize->6,
+    FontColor->GrayLevel[0]]
+  }, Closed]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Styles for Automatic Numbering and Lists", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell["\<\
+
+NumberedEquation is for DisplayFormula cells that number sequentially 
+throughout a notebook. Sets as   DefaultFormatType->TraditionalForm.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["NumberedEquation"],
+    CellMargins->{{54, 24}, {5, 10}},
+    CellFrameLabels->{{None, Cell[ 
+            TextData[ {"(", 
+              CounterBox[ "NumberedEquation"], ")"}]]}, {None, None}},
+    DefaultFormatType->TraditionalForm,
+    TextAlignment->Center,
+    SingleLetterItalics->True,
+    SpanMaxSize->Infinity,
+    CounterIncrements->"NumberedEquation",
+    FormatTypeAutoConvert->False,
+    FontFamily->"Times",
+    FontSize->12,
+    UnderoverscriptBoxOptions->{LimitsPositioning->True},
+    GridBoxOptions->{AllowScriptLevelChange->False}],
+  
+  Cell[StyleData["NumberedEquation", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["NumberedEquation", "HTML"],
+    FontSize->12],
+  
+  Cell[StyleData["NumberedEquation", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    PrivateEvaluationOptions->{"OutputFormPageWidth"->342},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell["\<\
+
+NumberedFigure is for adding a CellFrameLabel with the word Figure and the 
+value of the incremented NumberedFigure counter. Does not allow for a 
+caption.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["NumberedFigure"],
+    CellMargins->{{54, 24}, {5, 10}},
+    ShowCellLabel->False,
+    CellLabelAutoDelete->True,
+    CellFrameLabels->{{None, None}, {Cell[ 
+            TextData[ {"Figure ", 
+              CounterBox[ "NumberedFigure"], "."}], FontFamily -> "Helvetica",
+             FontSize -> 10, FontWeight -> "Bold"], None}},
+    CounterIncrements->"NumberedFigure",
+    StyleMenuListing->None],
+  
+  Cell[StyleData["NumberedFigure", "Presentation"]],
+  
+  Cell[StyleData["NumberedFigure", "HTML"]],
+  
+  Cell[StyleData["NumberedFigure", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    CellFrameLabels->{{None, None}, {Cell[ 
+            TextData[ {"Figure ", 
+              CounterBox[ "NumberedFigure"], "."}], FontFamily -> "Helvetica",
+             FontSize -> 9, FontWeight -> "Bold"], None}}]
+  }, Closed]],
+  
+  Cell["\<\
+
+NumberedTable is for adding a CellFrameLabel with the word Table and the 
+value of the incremented NumberedTable counter to a Table cell. Does not 
+allow for a caption.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["NumberedTable"],
+    CellMargins->{{54, 24}, {5, 10}},
+    CellFrameLabels->{{None, None}, {Cell[ 
+            TextData[ {"Table ", 
+              CounterBox[ "NumberedTable"], "."}], FontFamily -> "Helvetica", 
+            FontSize -> 10, FontWeight -> "Bold"], None}},
+    CounterIncrements->"NumberedTable",
+    StyleMenuListing->None],
+  
+  Cell[StyleData["NumberedTable", "Presentation"],
+    CellMargins->{{54, 25}, {2, 10}}],
+  
+  Cell[StyleData["NumberedTable", "HTML"]],
+  
+  Cell[StyleData["NumberedTable", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    CellFrameLabels->{{None, None}, {Cell[ 
+            TextData[ {"Table ", 
+              CounterBox[ "NumberedTable"], "."}], FontFamily -> "Helvetica", 
+            FontSize -> 9, FontWeight -> "Bold"], None}}]
+  }, Closed]],
+  
+  Cell["\<\
+
+NumberedFigureCaption to be used directly after a PlacedGraphic cell. Use the \
+
+TMJStyles.nb palette to begin the cell and paste in the word Figure and the 
+NumberedFigure counter value. Allows for a descriptive caption.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["NumberedFigureCaption"],
+    CellDingbat->"\[FilledUpTriangle]",
+    CellMargins->{{54, 24}, {5, 10}},
+    CellLabelPositioning->Left,
+    TextAlignment->Left,
+    CounterIncrements->"NumberedFigure",
+    FormatTypeAutoConvert->False,
+    FontFamily->"Helvetica",
+    FontSize->10],
+  
+  Cell[StyleData["NumberedFigureCaption", "Presentation"],
+    FontSize->12],
+  
+  Cell[StyleData["NumberedFigureCaption", "HTML"]],
+  
+  Cell[StyleData["NumberedFigureCaption", "Printout"],
+    CellDingbat->None,
+    CellMargins->{{72, 72}, {18, 4}},
+    LineSpacing->{0, 11},
+    FontSize->9]
+  }, Closed]],
+  
+  Cell["\<\
+
+NumberedTableCaption to be used directly after a Table cell. Use the 
+TMJStyles.nb palette to begin the cell and paste in the word Table and the 
+NumberedTable counter value. Allows for a descriptive caption.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["NumberedTableCaption"],
+    CellDingbat->"\[FilledUpTriangle]",
+    CellMargins->{{54, 24}, {5, 10}},
+    CounterIncrements->"NumberedTable",
+    FontFamily->"Helvetica",
+    FontSize->10],
+  
+  Cell[StyleData["NumberedTableCaption", "Presentation"],
+    CellMargins->{{54, 24}, {2, 10}},
+    FontSize->12],
+  
+  Cell[StyleData["NumberedTableCaption", "HTML"]],
+  
+  Cell[StyleData["NumberedTableCaption", "Printout"],
+    CellDingbat->None,
+    CellMargins->{{72, 72}, {18, 4}},
+    LineSpacing->{0, 11},
+    FontSize->9]
+  }, Closed]],
+  
+  Cell["\<\
+
+NumberedProgramCaption to be used directly after a Program cell. Use the 
+TMJStyles.nb palette to begin the cell and paste in the word Listing and the 
+NumberedProgram counter value. Allows for a descriptive caption.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["NumberedProgramCaption"],
+    CellDingbat->"\[FilledUpTriangle]",
+    CellMargins->{{54, 24}, {5, 10}},
+    CounterIncrements->"NumberedProgram",
+    FormatTypeAutoConvert->False,
+    FontFamily->"Helvetica",
+    FontSize->10],
+  
+  Cell[StyleData["NumberedProgramCaption", "Presentation"],
+    FontSize->12],
+  
+  Cell[StyleData["NumberedProgramCaption", "HTML"]],
+  
+  Cell[StyleData["NumberedProgramCaption", "Printout"],
+    CellDingbat->None,
+    CellMargins->{{72, 72}, {18, 4}},
+    LineSpacing->{0, 11},
+    FontSize->9]
+  }, Closed]],
+  
+  Cell["\<\
+
+Use of Caption style by itself should be discouraged. See cell styles for 
+NumberedFigureCaption, NumberedTableCaption, NumberedProgramCaption and the 
+TMJStyles.nb palette.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Caption"],
+    CellDingbat->"\[FilledUpTriangle]",
+    CellMargins->{{54, 24}, {Inherited, 5}},
+    PageBreakAbove->False,
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->10],
+  
+  Cell[StyleData["Caption", "Presentation"],
+    FontSize->12],
+  
+  Cell[StyleData["Caption", "HTML"]],
+  
+  Cell[StyleData["Caption", "Printout"],
+    CellDingbat->None,
+    CellMargins->{{72, 72}, {2, 4}},
+    LineSpacing->{0, 11},
+    FontSize->9]
+  }, Closed]],
+  
+  Cell["\<\
+
+BulletedList is an optional style. Adds a CellDingbat of FilledSmallCircle. 
+Text indents left a little more.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["BulletedList"],
+    CellDingbat->"\[FilledSmallCircle]",
+    CellMargins->{{86, 10}, {Inherited, Inherited}},
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["BulletedList", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["BulletedList", "HTML"]],
+  
+  Cell[StyleData["BulletedList", "Printout"],
+    CellMargins->{{101, 72}, {2, Inherited}},
+    LineSpacing->{0, 12},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell["\<\
+
+BeginNumberedList to be used as the first item in a numbered list sequence. 
+Use the TMJStyles.nb palette to begin the cell and paste in the List counter 
+value.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["BeginNumberedList"],
+    CellMargins->{{74, 10}, {Inherited, Inherited}},
+    ParagraphIndent->-13,
+    CounterIncrements->"List",
+    CounterAssignments->{{"List", 0}},
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["BeginNumberedList", "Presentation"],
+    ParagraphIndent->-19,
+    FontSize->14],
+  
+  Cell[StyleData["BeginNumberedList", "HTML"],
+    FontSize->10],
+  
+  Cell[StyleData["BeginNumberedList", "Printout"],
+    CellMargins->{{85, 72}, {2, Inherited}},
+    LineSpacing->{0, 12},
+    ParagraphIndent->-17,
+    FontSize->10]
+  }, Closed]],
+  
+  Cell["\<\
+
+NumberedList to be used for subsequent items in a numbered list sequence with \
+
+a single digit. Use the TMJstyles.nb palette to begin the cell and paste in 
+the List counter value.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["NumberedList"],
+    CellMargins->{{74, 10}, {Inherited, Inherited}},
+    ParagraphIndent->-13,
+    CounterIncrements->"List",
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["NumberedList", "Presentation"],
+    ParagraphIndent->-19,
+    FontSize->14],
+  
+  Cell[StyleData["NumberedList", "HTML"]],
+  
+  Cell[StyleData["NumberedList", "Printout"],
+    CellMargins->{{85, 72}, {2, Inherited}},
+    LineSpacing->{0, 12},
+    ParagraphIndent->-17,
+    FontSize->10]
+  }, Closed]],
+  
+  Cell["\<\
+
+NumberedListTwo to be used for subsequent items in a numbered list sequence 
+with two digits. Use the TMJStyles.nb palette to begin the cell and paste in 
+the List counter value.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["NumberedListTwo"],
+    CellMargins->{{74, 10}, {Inherited, Inherited}},
+    ParagraphIndent->-19,
+    CounterIncrements->"List",
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["NumberedListTwo", "Presentation"],
+    ParagraphIndent->-28,
+    FontSize->14],
+  
+  Cell[StyleData["NumberedListTwo", "HTML"]],
+  
+  Cell[StyleData["NumberedListTwo", "Printout"],
+    CellMargins->{{85, 72}, {2, Inherited}},
+    LineSpacing->{0, 12},
+    ParagraphIndent->-17,
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["NolabelList"],
+    CellMargins->{{74, 10}, {Inherited, Inherited}},
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["NolabelList", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["NolabelList", "HTML"]],
+  
+  Cell[StyleData["NolabelList", "Printout"],
+    CellMargins->{{85, 72}, {2, Inherited}},
+    LineSpacing->{0, 12},
+    ParagraphIndent->0,
+    FontSize->10]
+  }, Closed]],
+  
+  Cell["\<\
+
+Reference style to be used in the bibliography portion of a notebook. One 
+cell for each bibliography entry. Use the TMJStyles.nb palette to begin cell 
+and paste in the Reference counter value. Use Inline style SB for bold font 
+changes. Use Inline style SO for italic font changes.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Reference"],
+    CellMargins->{{54, 25}, {Inherited, Inherited}},
+    ParagraphIndent->-20,
+    CounterIncrements->"Reference",
+    FontFamily->"Helvetica",
+    FontSize->10],
+  
+  Cell[StyleData["Reference", "Presentation"],
+    ParagraphIndent->-25,
+    FontFamily->"Helvetica",
+    FontSize->12],
+  
+  Cell[StyleData["Reference", "HTML"],
+    FontSize->8],
+  
+  Cell[StyleData["Reference", "Printout"],
+    CellMargins->{{85, 72}, {2, 4}},
+    LineSpacing->{0, 10},
+    ParagraphIndent->-15,
+    FontSize->8]
+  }, Closed]],
+  
+  Cell["\<\
+
+ReferenceTwo is for two-digit reference entries. See the TMJStyles.nb 
+palette. Use Inline style SB for bold font changes. Use Inline style SO for 
+italic font changes.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["ReferenceTwo"],
+    CellMargins->{{54, 25}, {Inherited, Inherited}},
+    ParagraphIndent->-22,
+    CounterIncrements->"Reference",
+    FontFamily->"Helvetica",
+    FontSize->10],
+  
+  Cell[StyleData["ReferenceTwo", "Presentation"],
+    ParagraphIndent->-27,
+    FontFamily->"Helvetica",
+    FontSize->12],
+  
+  Cell[StyleData["ReferenceTwo", "HTML"]],
+  
+  Cell[StyleData["ReferenceTwo", "Printout"],
+    CellMargins->{{84, 72}, {2, 4}},
+    LineSpacing->{0, 10},
+    ParagraphIndent->-16,
+    FontSize->8]
+  }, Closed]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Journal Element Styles", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell["\<\
+
+OnlineHeader to be used at the beginning of a notebook. Precedes the Title 
+cell.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["OnlineHeader"],
+    ShowCellBracket->True,
+    CellMargins->{{0, 25}, {0, 0}},
+    CellGroupingRules->{"TitleGrouping", 30},
+    PageBreakBelow->False,
+    CellFrameMargins->{{54, 4}, {2, 8}},
+    LineSpacing->{1, 1},
+    StyleMenuListing->None,
+    FontFamily->"Times",
+    FontSize->12,
+    FontWeight->"Plain",
+    FontSlant->"Italic",
+    FontTracking->"Wide",
+    FontColor->GrayLevel[1],
+    Background->GrayLevel[0]],
+  
+  Cell[StyleData["OnlineHeader", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["OnlineHeader", "HTML"],
+    CellFrame->False,
+    CellMargins->{{54, 24}, {10, 10}},
+    FontFamily->"Times",
+    FontSize->10,
+    FontColor->GrayLevel[0],
+    Background->None],
+  
+  Cell[StyleData["OnlineHeader", "Printout"],
+    PageWidth->PaperWidth,
+    CellFrame->False,
+    CellMargins->{{72, 72}, {0, 0}},
+    FontSize->10,
+    FontColor->GrayLevel[0],
+    Background->None]
+  }, Closed]],
+  
+  Cell["\<\
+
+Cell Style PreTitle to be used for such things that precede a title as in 
+EDITOR'S PICK. Should be entered all caps with a space between each letter, 
+two spaces between words. FontTracking is set to Wide.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["PreTitle"],
+    ShowCellBracket->True,
+    CellMargins->{{54, 25}, {Inherited, 0}},
+    CellGroupingRules->{"TitleGrouping", 0},
+    PageBreakBelow->False,
+    CellFrameMargins->{{55, 4}, {8, 20}},
+    LineSpacing->{1.125, 0},
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->14,
+    FontWeight->"Bold",
+    FontTracking->"Wide"],
+  
+  Cell[StyleData["PreTitle", "Presentation"]],
+  
+  Cell[StyleData["PreTitle", "HTML"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    CellFrameMargins->False,
+    FontSize->12],
+  
+  Cell[StyleData["PreTitle", "Printout"],
+    CellMargins->{{72, 72}, {14, 0}},
+    CellFrameMargins->False,
+    FontSize->12,
+    FontColor->GrayLevel[0],
+    Background->None]
+  }, Closed]],
+  
+  Cell["\<\
+
+Author to be used after the Title cell with author name(s). Author name(s) 
+may be preced by \"Edited by \" for certain columns. Text in author cell to 
+be used as the left page header. Usually followed by an Address cell.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Author"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    CellGroupingRules->"NormalGrouping",
+    PageBreakBelow->False,
+    FontFamily->"Helvetica",
+    FontSize->14,
+    FontWeight->"Bold",
+    FontSlant->"Plain"],
+  
+  Cell[StyleData["Author", "Presentation"],
+    FontSize->16],
+  
+  Cell[StyleData["Author", "HTML"],
+    CellMargins->{{54, 24}, {2, 15}},
+    FontSize->12],
+  
+  Cell[StyleData["Author", "Printout"],
+    CellMargins->{{72, 72}, {4, 4}},
+    LineSpacing->{0, 14},
+    FontSize->12]
+  }, Closed]],
+  
+  Cell["\<\
+
+SecondAuthor to be used after a Section cell with author name(s) for a 
+particular portion of a notebook. Used for columns Tech Support and Tricks of \
+
+the Trade. Usually followed by an Address cell.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["SecondAuthor"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    CellGroupingRules->"NormalGrouping",
+    PageBreakBelow->False,
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->14,
+    FontWeight->"Bold",
+    FontSlant->"Plain"],
+  
+  Cell[StyleData["SecondAuthor", "Presentation"],
+    FontSize->16],
+  
+  Cell[StyleData["SecondAuthor", "HTML"],
+    CellMargins->{{54, 24}, {2, 15}},
+    FontSize->12],
+  
+  Cell[StyleData["SecondAuthor", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    LineSpacing->{0, 14},
+    FontSize->12]
+  }, Closed]],
+  
+  Cell["\<\
+
+Address to be used after Author or SecondAuthor. Contains contact information \
+
+for article (section) author. If more than one author is listed with the same \
+
+affiliation use one Address cell. If authors have different affiliations use 
+Author (SecondAuthor) and Address for each.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Address"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    CellGroupingRules->"NormalGrouping",
+    PageBreakBelow->False,
+    FontFamily->"Times",
+    FontSize->12,
+    FontWeight->"Plain",
+    FontSlant->"Italic"],
+  
+  Cell[StyleData["Address", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["Address", "HTML"],
+    CellMargins->{{54, 24}, {2, 2}},
+    FontSize->10],
+  
+  Cell[StyleData["Address", "Printout"],
+    CellMargins->{{70, 72}, {22, 4}},
+    LineSpacing->{0, 12},
+    FontSize->8,
+    FontSlant->"Italic"]
+  }, Closed]],
+  
+  Cell["\<\
+
+Abstract to be used after the Address cell. Contains a short summary of the 
+article.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Abstract"],
+    CellMargins->{{54, 24}, {Inherited, 30}},
+    LineSpacing->{1, 3},
+    FontFamily->"Times",
+    FontSize->14,
+    FontWeight->"Bold",
+    FontSlant->"Italic"],
+  
+  Cell[StyleData["Abstract", "Presentation"],
+    FontSize->16],
+  
+  Cell[StyleData["Abstract", "HTML"],
+    CellMargins->{{54, 24}, {20, 30}},
+    FontSize->12],
+  
+  Cell[StyleData["Abstract", "Printout"],
+    CellMargins->{{72, 72}, {Inherited, 2}},
+    LineSpacing->{0, 12},
+    FontSize->10,
+    FontWeight->"Bold",
+    FontSlant->"Plain"]
+  }, Closed]],
+  
+  Cell["\<\
+
+BeginQuestion is used in the In and Out column directly after a section cell. \
+
+Followed by either Question or Input, InputOnly, etc. Last paragraph of the 
+question should be in EndQuestion cell style.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["BeginQuestion"],
+    CellFrame->{{0, 0}, {0, 2}},
+    CellDingbat->"Q:",
+    CellMargins->{{72, 34}, {8, 8}},
+    CellFrameMargins->{{0, 0}, {2, 4}},
+    LineSpacing->{1, 2},
+    FontFamily->"Times",
+    FontSize->14,
+    FontWeight->"Bold",
+    FontColor->RGBColor[0.115511, 0.321752, 0.580118]],
+  
+  Cell[StyleData["BeginQuestion", "Presentation"],
+    FontSize->16],
+  
+  Cell[StyleData["BeginQuestion", "HTML"],
+    CellMargins->{{72, 34}, {Inherited, Inherited}},
+    FontSize->10],
+  
+  Cell[StyleData["BeginQuestion", "Printout"],
+    PageWidth->PaperWidth,
+    CellFrame->{{0, 0}, {0, 2}},
+    CellMargins->{{72, 72}, {4, 16}},
+    LineSpacing->{0, 12},
+    FontSize->10,
+    FontWeight->"Plain",
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell["\<\
+
+Question used for text cells within the Question portion of a QuestionAnswer.
+
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Question"],
+    CellMargins->{{74, 34}, {8, 8}},
+    LineSpacing->{1, 2},
+    FontFamily->"Times",
+    FontSize->14,
+    FontWeight->"Bold",
+    FontColor->RGBColor[0.115511, 0.321752, 0.580118]],
+  
+  Cell[StyleData["Question", "Presentation"],
+    FontSize->16],
+  
+  Cell[StyleData["Question", "HTML"],
+    FontSize->10],
+  
+  Cell[StyleData["Question", "Printout"],
+    PageWidth->PaperWidth,
+    CellMargins->{{72, 72}, {2, 4}},
+    LineSpacing->{0, 12},
+    FontSize->10,
+    FontWeight->"Plain",
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell["\<\
+
+EndQuestion used in the In and Out column as the last paragraph of the 
+question.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["EndQuestion"],
+    CellFrame->{{0, 0}, {2, 0}},
+    CellMargins->{{70, 35}, {8, 8}},
+    LineSpacing->{1, 2},
+    FontFamily->"Times",
+    FontSize->14,
+    FontWeight->"Bold",
+    FontColor->RGBColor[0.115511, 0.321752, 0.580118]],
+  
+  Cell[StyleData["EndQuestion", "Presentation"],
+    LineSpacing->{1, 4},
+    FontSize->16],
+  
+  Cell[StyleData["EndQuestion", "HTML"],
+    FontSize->10],
+  
+  Cell[StyleData["EndQuestion", "Printout"],
+    CellFrame->{{0, 0}, {2, 0}},
+    CellMargins->{{72, 72}, {18, 4}},
+    LineSpacing->{0, 12},
+    FontSize->10,
+    FontWeight->"Plain",
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell["\<\
+
+BeginEndQuestion is used in the In and Out column directly after a section 
+cell. Used if the question is a single text paragraph.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["BeginEndQuestion"],
+    CellFrame->{{0, 0}, {2, 2}},
+    CellDingbat->"Q:",
+    CellMargins->{{70, 35}, {8, 8}},
+    LineSpacing->{1, 2},
+    FontFamily->"Times",
+    FontSize->14,
+    FontWeight->"Bold",
+    FontColor->RGBColor[0.115511, 0.321752, 0.580118]],
+  
+  Cell[StyleData["BeginEndQuestion", "Presentation"],
+    LineSpacing->{1, 4},
+    FontSize->16],
+  
+  Cell[StyleData["BeginEndQuestion", "HTML"],
+    FontSize->10],
+  
+  Cell[StyleData["BeginEndQuestion", "Printout"],
+    CellMargins->{{72, 72}, {18, 14}},
+    LineSpacing->{0, 12},
+    FontSize->10,
+    FontWeight->"Plain",
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell["\<\
+
+BeginAnswer is used in the In and Out column directly after an EndQuestion or \
+
+BeginEndQuestion cell style to begin the answer portion. Followed by Text or 
+Input/Output etc.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["BeginAnswer"],
+    CellDingbat->"A:",
+    CellMargins->{{70, 35}, {Inherited, Inherited}},
+    LineSpacing->{1, 4},
+    CounterIncrements->"Text",
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["BeginAnswer", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["BeginAnswer", "HTML"],
+    FontSize->10],
+  
+  Cell[StyleData["BeginAnswer", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    LineSpacing->{0, 12},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Answer"],
+    CellMargins->{{70, 35}, {Inherited, Inherited}},
+    LineSpacing->{1, 4},
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["Answer", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["Answer", "HTML"],
+    FontSize->10],
+  
+  Cell[StyleData["Answer", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    LineSpacing->{0, 12},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["EditorialComment"],
+    CellFrame->False,
+    CellDingbat->"\[FilledCircle]",
+    CellMargins->{{54, 25}, {Inherited, Inherited}},
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontColor->RGBColor[1, 0, 0],
+    Background->GrayLevel[1]],
+  
+  Cell[StyleData["EditorialComment", "Presentation"]],
+  
+  Cell[StyleData["EditorialComment", "HTML"],
+    FontSize->10],
+  
+  Cell[StyleData["EditorialComment", "Printout"],
+    CellMargins->{{24, 80}, {Inherited, 0}},
+    LineSpacing->{1, 3},
+    FontSize->10,
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell["\<\
+
+SectionAboutAuthor to be used as the section head for the About the Author 
+portion of a notebook.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["SectionAboutAuthor"],
+    CellMargins->{{54, 24}, {0, 30}},
+    CellGroupingRules->{"SectionGrouping", 40},
+    PageBreakBelow->False,
+    CellFrameMargins->4,
+    FontFamily->"Helvetica",
+    FontSize->18,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["SectionAboutAuthor", "Presentation"]],
+  
+  Cell[StyleData["SectionAboutAuthor", "HTML"],
+    Background->None],
+  
+  Cell[StyleData["SectionAboutAuthor", "Printout"],
+    CellFrame->False,
+    CellMargins->{{72, 72}, {0, 30}},
+    CellFrameMargins->4,
+    FontSize->12,
+    Background->GrayLevel[0.899001]]
+  }, Closed]],
+  
+  Cell["\<\
+
+TextAboutAuthor is to be used for the text in the About the Author portion of \
+
+a notebook. 
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["TextAboutAuthor"],
+    CellMargins->{{54, 24}, {2, 0}},
+    CellFrameMargins->4,
+    LineSpacing->{1, 3},
+    CounterIncrements->"Text",
+    FontSize->12],
+  
+  Cell[StyleData["TextAboutAuthor", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["TextAboutAuthor", "HTML"],
+    FontSize->10,
+    Background->None],
+  
+  Cell[StyleData["TextAboutAuthor", "Printout"],
+    CellMargins->{{72, 72}, {2, 0}},
+    CellFrameMargins->4,
+    LineSpacing->{0, 11},
+    FontFamily->"Helvetica",
+    FontSize->9,
+    Background->GrayLevel[0.899001]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Subsubsubsection"],
+    CellDingbat->None,
+    CellMargins->{{54, 25}, {6, 20}},
+    CellGroupingRules->{"SectionGrouping", 60},
+    PageBreakBelow->False,
+    CounterIncrements->"Subsubsubsection",
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->12,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["Subsubsubsection", "Presentation"]],
+  
+  Cell[StyleData["Subsubsubsection", "HTML"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    FontSize->10],
+  
+  Cell[StyleData["Subsubsubsection", "Printout"],
+    CellDingbat->None,
+    CellMargins->{{72, 72}, {-4, 2}},
+    FontSize->9,
+    FontWeight->"Bold",
+    FontSlant->"Plain"]
+  }, Closed]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Display Formulas and Programming", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["DisplayFormula"],
+    CellMargins->{{54, 25}, {2, 10}},
+    CellHorizontalScrolling->True,
+    DefaultFormatType->TraditionalForm,
+    TextAlignment->Center,
+    ScriptLevel->0,
+    SingleLetterItalics->True,
+    SpanMaxSize->Infinity,
+    FormatTypeAutoConvert->False,
+    FontFamily->"Times",
+    FontSize->12,
+    UnderoverscriptBoxOptions->{LimitsPositioning->True},
+    GridBoxOptions->{AllowScriptLevelChange->False}],
+  
+  Cell[StyleData["DisplayFormula", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["DisplayFormula", "HTML"],
+    FontSize->12],
+  
+  Cell[StyleData["DisplayFormula", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    PrivateEvaluationOptions->{"OutputFormPageWidth"->342},
+    LineSpacing->{1.25, 0},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["ChemicalFormula"],
+    CellMargins->{{54, 25}, {2, 10}},
+    DefaultFormatType->DefaultInputFormatType,
+    AutoSpacing->False,
+    ScriptLevel->1,
+    ScriptBaselineShifts->{0.6, Automatic},
+    SingleLetterItalics->False,
+    ZeroWidthTimes->False,
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["ChemicalFormula", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["ChemicalFormula", "HTML"],
+    FontSize->10],
+  
+  Cell[StyleData["ChemicalFormula", "Printout"],
+    CellMargins->{{72, 72}, {2, 4}},
+    LineSpacing->{0, 12},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Program"],
+    CellMargins->{{54, 25}, {Inherited, 6}},
+    FontFamily->"Courier",
+    FontSize->10],
+  
+  Cell[StyleData["Program", "Presentation"],
+    FontSize->12],
+  
+  Cell[StyleData["Program", "HTML"],
+    FontSize->9],
+  
+  Cell[StyleData["Program", "Printout"],
+    CellMargins->{{72, 72}, {2, 18}},
+    LineSpacing->{0, 11},
+    FontSize->9]
+  }, Closed]],
+  
+  Cell["\<\
+
+Table cell style to be used for cells containing displayed tabular material. 
+May be followed by NumberedTableCaption cell.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Table"],
+    CellMargins->{{54, 24}, {5, 10}},
+    TextAlignment->Center,
+    FontFamily->"Times",
+    FontSize->12,
+    Background->GrayLevel[0.899001]],
+  
+  Cell[StyleData["Table", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["Table", "HTML"],
+    Background->None],
+  
+  Cell[StyleData["Table", "Printout"],
+    CellMargins->{{72, 72}, {0, 18}},
+    FontSize->10,
+    Background->None]
+  }, Closed]],
+  
+  Cell[TextData[{
+    "DefinitionBox, 2 left-aligned columns, to emulate gray boxes in the ",
+    StyleBox["Mathematica",
+      FontSlant->"Italic"],
+    " book."
+  }], "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["DefinitionBox"],
+    CellFrame->0.5,
+    CellMargins->{{54, 24}, {5, 10}},
+    CellHorizontalScrolling->True,
+    AutoIndent->False,
+    AutoSpacing->False,
+    SingleLetterItalics->False,
+    LineIndent->0,
+    FontFamily->"Times",
+    FontSize->12,
+    Background->GrayLevel[0.899001],
+    GridBoxOptions->{RowSpacings->1.5,
+    ColumnSpacings->1,
+    ColumnWidths->{0.4, 0.6},
+    ColumnAlignments->{Left}}],
+  
+  Cell[StyleData["DefinitionBox", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["DefinitionBox", "HTML"],
+    Background->None],
+  
+  Cell[StyleData["DefinitionBox", "Printout"],
+    CellMargins->{{72, 72}, {2, 18}},
+    FontSize->10,
+    Background->None]
+  }, Closed]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Styles for Headers and Footers", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Header"],
+    CellMargins->{{54, 24}, {0, 0}},
+    StyleMenuListing->None,
+    FontFamily->"Times",
+    FontSize->9,
+    FontSlant->"Italic"],
+  
+  Cell[StyleData["Header", "Presentation"]],
+  
+  Cell[StyleData["Header", "HTML"]],
+  
+  Cell[StyleData["Header", "Printout"],
+    PageWidth->PaperWidth,
+    CellMargins->{{72, 72}, {2, 2}},
+    StyleMenuListing->None,
+    FontSize->9]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["PageNumber"],
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->9,
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["PageNumber", "Printout"],
+    PageWidth->PaperWidth,
+    CellMargins->{{72, 72}, {2, 2}},
+    StyleMenuListing->None]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Footer"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    StyleMenuListing->None,
+    FontFamily->"Helvetica",
+    FontSize->7,
+    FontSlant->"Oblique"],
+  
+  Cell[StyleData["Footer", "Printout"],
+    PageWidth->PaperWidth,
+    CellMargins->{{72, 72}, {2, 2}},
+    StyleMenuListing->None,
+    FontSize->6]
+  }, Closed]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Frontmatter Styles", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["tocentry"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    TabFilling->".",
+    LineSpacing->{1, 4},
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["tocentry", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["tocentry", "HTML"],
+    LineSpacing->{1, 3},
+    FontSize->10],
+  
+  Cell[StyleData["tocentry", "Printout"],
+    CellMargins->{{84, 72}, {0, 0}},
+    AutoIndent->True,
+    LineSpacing->{0, 12},
+    ParagraphIndent->0,
+    FontSize->10]
+  }, Closed]],
+  
+  Cell["\<\
+
+LetterWriter to be used after a letter. Use inline formatting SCBO for 
+person's name. Use Text cell style for letter text.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["LetterWriter"],
+    CellMargins->{{200, Inherited}, {6, 0}},
+    LineSpacing->{0, 10},
+    FontFamily->"Helvetica",
+    FontSize->10,
+    FontSlant->"Oblique"],
+  
+  Cell[StyleData["LetterWriter", "Presentation"],
+    LineSpacing->{0, 12},
+    FontSize->12],
+  
+  Cell[StyleData["LetterWriter", "HTML"]],
+  
+  Cell[StyleData["LetterWriter", "Printout"],
+    CellMargins->{{250, Inherited}, {6, 0}},
+    LineSpacing->{0, 8},
+    FontFamily->"Helvetica",
+    FontSize->8,
+    FontSlant->"Oblique"]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["LetterReply"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    LineSpacing->{1, 4},
+    FontFamily->"Times",
+    FontSize->12,
+    FontSlant->"Italic"],
+  
+  Cell[StyleData["LetterReply", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["LetterReply", "HTML"],
+    LineSpacing->{1, 3},
+    FontSize->10],
+  
+  Cell[StyleData["LetterReply", "Printout"],
+    CellMargins->{{72, 72}, {8, 4}},
+    LineSpacing->{0, 12},
+    FontSize->10]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["IndexEntry"],
+    CellMargins->{{54, 24}, {Inherited, Inherited}},
+    LineSpacing->{1, 4},
+    FontFamily->"Times",
+    FontSize->12],
+  
+  Cell[StyleData["IndexEntry", "Presentation"],
+    FontSize->14],
+  
+  Cell[StyleData["IndexEntry", "HTML"],
+    FontSize->10],
+  
+  Cell[StyleData["IndexEntry", "Printout"],
+    PageWidth->336,
+    CellMargins->{{72, 72}, {0, 0}},
+    AutoIndent->True,
+    LineSpacing->{0, 10},
+    ParagraphIndent->-27,
+    TabSpacings->1,
+    FontSize->8]
+  }, Closed]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Hyperlink Styles", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell["\<\
+
+The cells below define styles useful for making hypertext ButtonBoxes.  The 
+\"Hyperlink\" style is for links within the same Notebook, or between 
+Notebooks.
+\
+\>", "Text"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["Hyperlink"],
+    StyleMenuListing->None,
+    ButtonStyleMenuListing->Automatic,
+    FontColor->RGBColor[0, 0, 1],
+    FontVariations->{"Underline"->True},
+    ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`NotebookLocate[ #2]}]&),
+    Active->True,
+    ButtonNote->ButtonData}],
+  
+  Cell[StyleData["Hyperlink", "Presentation"]],
+  
+  Cell[StyleData["Hyperlink", "Printout"],
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell["\<\
+
+The following styles are for linking automatically to the locally installed 
+on-line help system.
+\
+\>", "Text"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["MainBookLink"],
+    StyleMenuListing->None,
+    ButtonStyleMenuListing->Automatic,
+    FontColor->RGBColor[0, 0, 1],
+    FontVariations->{"Underline"->True},
+    ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`HelpBrowserLookup[ "MainBook", #]}]&),
+    Active->True,
+    ButtonFrame->"None"}],
+  
+  Cell[StyleData["MainBookLink", "Presentation"]],
+  
+  Cell[StyleData["MainBookLink", "HTML"]],
+  
+  Cell[StyleData["MainBookLink", "Printout"],
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["AddOnsLink"],
+    StyleMenuListing->None,
+    ButtonStyleMenuListing->Automatic,
+    FontColor->RGBColor[0, 0, 1],
+    FontVariations->{"Underline"->True},
+    ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`HelpBrowserLookup[ "AddOns", #]}]&),
+    Active->True,
+    ButtonFrame->"None"}],
+  
+  Cell[StyleData["AddOnsLink", "Presentation"]],
+  
+  Cell[StyleData["AddOnsLink", "HTML"]],
+  
+  Cell[StyleData["AddOnsLink", "Printout"],
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["RefGuideLink"],
+    StyleMenuListing->None,
+    ButtonStyleMenuListing->Automatic,
+    FontColor->RGBColor[0, 0, 1],
+    FontVariations->{"Underline"->True},
+    ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`HelpBrowserLookup[ "RefGuide", #]}]&),
+    Active->True,
+    ButtonFrame->"None"}],
+  
+  Cell[StyleData["RefGuideLink", "Presentation"]],
+  
+  Cell[StyleData["RefGuideLink", "HTML"]],
+  
+  Cell[StyleData["RefGuideLink", "Printout"],
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["GettingStartedLink"],
+    StyleMenuListing->None,
+    ButtonStyleMenuListing->Automatic,
+    FontColor->RGBColor[0, 0, 1],
+    FontVariations->{"Underline"->True},
+    ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`HelpBrowserLookup[ "GettingStarted", #]}]&),
+    Active->True,
+    ButtonFrame->"None"}],
+  
+  Cell[StyleData["GettingStartedLink", "Presentation"]],
+  
+  Cell[StyleData["GettingStartedLink", "HTML"]],
+  
+  Cell[StyleData["GettingStartedLink", "Printout"],
+    FontColor->GrayLevel[0]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["OtherInformationLink"],
+    StyleMenuListing->None,
+    ButtonStyleMenuListing->Automatic,
+    FontColor->RGBColor[0, 0, 1],
+    FontVariations->{"Underline"->True},
+    ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`HelpBrowserLookup[ "OtherInformation", #]}]&),
+    Active->True,
+    ButtonFrame->"None"}],
+  
+  Cell[StyleData["OtherInformationLink", "Presentation"]],
+  
+  Cell[StyleData["OtherInformationLink", "HTML"]],
+  
+  Cell[StyleData["OtherInformationLink", "Printout"],
+    FontColor->GrayLevel[0]]
+  }, Closed]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["FormatType Styles", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell["\<\
+
+These cells define styles that are mixed in with most other cells.  If the 
+FormatType of a cell style matches the name of one of the styles defined 
+below, then that style is applied along with the local cell style 
+definitions. This is particularly true of Input and Output.
+\
+\>", "Text",
+    CellMargins->{{24, 0}, {Inherited, Inherited}}],
+  
+  Cell[StyleData["CellExpression"],
+    CellMargins->{{54, 24}, {2, 4}},
+    ShowCellLabel->False,
+    ShowSpecialCharacters->False,
+    AllowInlineCells->False,
+    Hyphenation->False,
+    AutoItalicWords->{},
+    StyleMenuListing->None,
+    FontFamily->"Courier",
+    FontSize->12,
+    Background->GrayLevel[1]],
+  
+  Cell[StyleData["InputForm"],
+    AllowInlineCells->False,
+    Hyphenation->False,
+    LineSpacing->{1.25, 0},
+    StyleMenuListing->None,
+    FontFamily->"Courier",
+    FontProperties->{"FontSerifed"->True,
+    "FontMonospaced"->True}],
+  
+  Cell[StyleData["OutputForm"],
+    LineSpacing->{1.25, 0},
+    StyleMenuListing->None,
+    FontFamily->"Courier",
+    FontProperties->{"FontSerifed"->True,
+    "FontMonospaced"->True}],
+  
+  Cell[StyleData["StandardForm"],
+    LineSpacing->{1.25, 0},
+    SingleLetterItalics->False,
+    StyleMenuListing->None,
+    FontFamily->"Courier",
+    FontProperties->{"FontSerifed"->True,
+    "FontMonospaced"->True}],
+  
+  Cell[StyleData["TraditionalForm"],
+    LineSpacing->{1.25, 0},
+    SingleLetterItalics->True,
+    TraditionalFunctionNotation->True,
+    DelimiterMatching->None,
+    ZeroWidthTimes->False,
+    StyleMenuListing->None,
+    FontFamily->"Times",
+    FontProperties->{"FontSerifed"->True,
+    "FontMonospaced"->False}],
+  
+  Cell["\<\
+
+The style defined below is mixed in to any cell that is in an inline cell 
+within another.
+\
+\>", "Text",
+    CellMargins->{{24, 0}, {Inherited, Inherited}}],
+  
+  Cell[StyleData["InlineCell"],
+    TextAlignment->Left,
+    ScriptLevel->1,
+    StyleMenuListing->None],
+  
+  Cell[StyleData["InlineCellEditing"],
+    StyleMenuListing->None,
+    Background->RGBColor[1, 0.749996, 0.8]]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Inline Formatting", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell["\<\
+
+InlineInput is for code segments embedded within another cell. Sets as 
+FormatType->DefaultInputFormatType.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["InlineInput"],
+    Evaluatable->True,
+    CellGroupingRules->"InputGrouping",
+    CellHorizontalScrolling->True,
+    AutoItalicWords->{},
+    FormatType->DefaultInputFormatType,
+    ShowStringCharacters->True,
+    NumberMarks->True,
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["InlineInput", "Presentation"]],
+  
+  Cell[StyleData["InlineInput", "HTML"]],
+  
+  Cell[StyleData["InlineInput", "Printout"]]
+  }, Closed]],
+  
+  Cell["\<\
+
+InlineInputTraditionalForm is for TraditionalForm input segments embedded 
+within another cell. Sets FormatType->TraditionalForm.
+\
+\>", "EditorialComment"],
+  
+  Cell[CellGroupData[{
+  
+  Cell[StyleData["InlineInputTraditionalForm"],
+    CellHorizontalScrolling->True,
+    FormatType->TraditionalForm,
+    ShowStringCharacters->True,
+    NumberMarks->True,
+    SingleLetterItalics->True,
+    ZeroWidthTimes->False,
+    FontFamily->"Times",
+    FontWeight->"Bold"],
+  
+  Cell[StyleData["InlineInputTraditionalForm", "Presentation"]],
+  
+  Cell[StyleData["InlineInputTraditionalForm", "HTML"]],
+  
+  Cell[StyleData["InlineInputTraditionalForm", "Printout"]]
+  }, Closed]],
+  
+  Cell["\<\
+
+The following styles are for modifying individual words or letters in a cell 
+exclusive of the cell style.
+\
+\>", "EditorialComment"],
+  
+  Cell["\<\
+
+RM used to change selection to FontWeight->Plain, FontSlant->Plain
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["RM"],
+    FontWeight->"Plain",
+    FontSlant->"Plain"],
+  
+  Cell["\<\
+
+BF used to change selection to FontWeight->Bold, FontSlant->Plain
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["BF"],
+    FontWeight->"Bold",
+    FontSlant->"Plain"],
+  
+  Cell["\<\
+
+IT used to change selection to FontWeight->Plain, FontSlant->Italic
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["IT"],
+    FontWeight->"Plain",
+    FontSlant->"Italic"],
+  
+  Cell["\<\
+
+BFI used to change selection to FontWeight->Bold, FontSlant->Italic
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["BFI"],
+    FontWeight->"Bold",
+    FontSlant->"Italic"],
+  
+  Cell["\<\
+
+TR used to change selection to normal text font, FontWeight->Plain, 
+FontSlant->Plain
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["TR"],
+    FontFamily->"Times",
+    FontWeight->"Plain",
+    FontSlant->"Plain"],
+  
+  Cell["\<\
+
+TI used to change selection to normal text font, FontWeight->Plain, 
+FontSlant->Italic
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["TI"],
+    FontFamily->"Times",
+    FontWeight->"Plain",
+    FontSlant->"Italic"],
+  
+  Cell["\<\
+
+TB used to change selection to normal text font, FontWeight->Bold, 
+FontSlant->Plain
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["TB"],
+    FontFamily->"Times",
+    FontWeight->"Bold",
+    FontSlant->"Plain"],
+  
+  Cell["\<\
+
+TBI used to change selection to normal text font, FontWeight->Bold, 
+FontSlant->Italic
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["TBI"],
+    FontFamily->"Times",
+    FontWeight->"Bold",
+    FontSlant->"Italic"],
+  
+  Cell["\<\
+
+MR used to change selection to monospace font with FontWeight->Plain, 
+FontSlant->Plain
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["MR"],
+    StyleMenuListing->None,
+    FontFamily->"Courier",
+    FontWeight->"Bold",
+    FontSlant->"Plain"],
+  
+  Cell["\<\
+
+MO used to change selection to monospace font with FontWeight->Plain, 
+FontSlant->Oblique
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["MO"],
+    StyleMenuListing->None,
+    FontFamily->"Courier",
+    FontWeight->"Bold",
+    FontSlant->"Oblique"],
+  
+  Cell["\<\
+
+MB used to change selection to monospace font with FontWeight->Bold, 
+FontSlant->Plain
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["MB"],
+    StyleMenuListing->None,
+    FontFamily->"Courier",
+    FontWeight->"Bold",
+    FontSlant->"Plain"],
+  
+  Cell["\<\
+
+MBO used to change selection to monospace font with FontWeight->Bold, 
+FontSlant->Oblique
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["MBO"],
+    StyleMenuListing->None,
+    FontFamily->"Courier",
+    FontWeight->"Bold",
+    FontSlant->"Oblique"],
+  
+  Cell["\<\
+
+SR used to change selection to sans serif font with FontWeight->Plain, 
+FontSlant->Plain
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["SR"],
+    FontFamily->"Helvetica",
+    FontWeight->"Plain",
+    FontSlant->"Plain"],
+  
+  Cell["\<\
+
+SO used to change selection to sans serif font with FontWeight->Plain, 
+FontSlant->Oblique
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["SO"],
+    FontFamily->"Helvetica",
+    FontWeight->"Plain",
+    FontSlant->"Oblique"],
+  
+  Cell["\<\
+
+SB used to change selection to sans serif font with FontWeight->Bold, 
+FontSlant->Plain
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["SB"],
+    FontFamily->"Helvetica",
+    FontWeight->"Bold",
+    FontSlant->"Plain"],
+  
+  Cell["\<\
+
+SBO used to change selection to sans serif font with FontWeight->Bold, 
+FontSlant->Oblique
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["SBO"],
+    FontFamily->"Helvetica",
+    FontWeight->"Bold",
+    FontSlant->"Oblique"],
+  
+  Cell[TextData[{
+    "SCL used to change selection to sans serif font \
+(FontTracking->\"Condensed \"",
+    ",FontWeight->",
+    StyleBox["\"Light\"", "MR"],
+    ")"
+  }], "EditorialComment"],
+  
+  Cell[StyleData["SCL"],
+    FontFamily->"Helvetica",
+    FontWeight->"Light",
+    FontTracking->"Condensed"],
+  
+  Cell[TextData[{
+    "SCLO used to change selection to sans serif font \
+(FontSlant->\"Oblique\",  FontTracking->\"Condensed\",FontWeight->",
+    StyleBox["\"Light\"", "MR"],
+    ")"
+  }], "EditorialComment"],
+  
+  Cell[StyleData["SCLO"],
+    FontFamily->"Helvetica",
+    FontWeight->"Light",
+    FontSlant->"Oblique",
+    FontTracking->"Condensed"],
+  
+  Cell["\<\
+
+SCB used to change selection to sans serif font (FontWeight->\"Bold\", 
+FontTracking->\"Condensed\")
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["SCB"],
+    FontFamily->"Helvetica",
+    FontWeight->"Bold",
+    FontTracking->"Condensed"],
+  
+  Cell["\<\
+
+SCBO used to change selection to sans serif font (FontWeight->\"Bold\", 
+FontSlant->\"Oblique\", FontTracking->\"Condensed\")
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["SCBO"],
+    FontFamily->"Helvetica",
+    FontWeight->"Bold",
+    FontSlant->"Oblique",
+    FontTracking->"Condensed"],
+  
+  Cell["\<\
+
+SXR used to change selection to sans serif font (FontWeight->\"ExtraBold\", 
+FontTracking->\"Condensed\")
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["SXR"],
+    FontFamily->"Helvetica",
+    FontWeight->"ExtraBold",
+    FontTracking->"Condensed"],
+  
+  Cell["\<\
+
+SXO used to change selection to sans serif font (FontWeight->\"ExtraBold\", 
+FontSlant->\"Oblique\", FontTracking->\"Condensed\")
+\
+\>", "EditorialComment"],
+  
+  Cell[StyleData["SXO"],
+    FontFamily->"Helvetica",
+    FontWeight->"ExtraBold",
+    FontSlant->"Oblique",
+    FontTracking->"Condensed"]
+  }, Closed]],
+  
+  Cell[CellGroupData[{
+  
+  Cell["Notation Package Styles", "Section",
+    CellFrame->False,
+    CellDingbat->None,
+    ShowCellBracket->True,
+    CellMargins->{{0, 0}, {10, 40}},
+    CellFrameMargins->{{20, 4}, {8, 8}},
+    FontColor->GrayLevel[1],
+    Background->RGBColor[0.269902, 0.558434, 0.715618]],
+  
+  Cell["\<\
+
+
+
+The cells below define certain styles needed by the Notation package. These 
+
+styles serve to make visible otherwise invisible tagboxes.
+
+
+\
+\>", "Text",
+    GeneratedCell->True,
+    CellTags->"NotationPackage"],
+  
+  Cell[StyleData["NotationTemplateStyle"],
+    GeneratedCell->True,
+    StyleMenuListing->None,
+    Background->None,
+    TagBoxOptions->{SyntaxForm->"symbol"},
+    CellTags->"NotationPackage"],
+  
+  Cell[StyleData["NotationPatternWrapperStyle"],
+    GeneratedCell->True,
+    StyleMenuListing->None,
+    Background->None,
+    TagBoxOptions->{SyntaxForm->"symbol"},
+    CellTags->"NotationPackage"],
+  
+  Cell[StyleData["NotationMadeBoxesWrapperStyle"],
+    GeneratedCell->True,
+    StyleMenuListing->None,
+    Background->None,
+    TagBoxOptions->{SyntaxForm->"symbol"},
+    CellTags->"NotationPackage"]
+  }, Closed]]
+  }, Open  ]]
+  }],
+MacintoshSystemPageSetup->"\<\
+00<0001804P000000]P2:?oQon82n@960dL5:0?l0080001804P000000]P2:001
+0000I00000400`<300000BL?00400@0000000000000006P801T1T00000000000
+00000000000000000000000000000000\>"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "Definition (limit:)"->{
+    Cell[7055, 216, 434, 9, 98, "InputOnly",
+      CellTags->"Definition (limit:)"],
+    Cell[15573, 464, 4112, 107, 100, "Text",
+      CellTags->"Definition (limit:)"]},
+  "Proposition (limit of sum)"->{
+    Cell[7850, 240, 358, 9, 99, "InputOnly",
+      CellTags->"Proposition (limit of sum)"],
+    Cell[12287, 368, 3062, 87, 66, "Text",
+      CellTags->"Proposition (limit of sum)"]},
+  "Definition (+:)"->{
+    Cell[8607, 261, 241, 6, 79, "InputOnly",
+      CellTags->"Definition (+:)"],
+    Cell[19688, 573, 2571, 76, 40, "Text",
+      CellTags->"Definition (+:)"]},
+  "Lemma (|+|)"->{
+    Cell[8851, 269, 579, 13, 99, "InputOnly",
+      CellTags->"Lemma (|+|)"],
+    Cell[22262, 651, 4456, 119, 57, "Text",
+      CellTags->"Lemma (|+|)"]},
+  "Lemma (max)"->{
+    Cell[9433, 284, 348, 8, 79, "InputOnly",
+      CellTags->"Lemma (max)"],
+    Cell[26721, 772, 2617, 76, 64, "Text",
+      CellTags->"Lemma (max)"]},
+  "Theory (limit)"->{
+    Cell[10029, 301, 843, 24, 128, "InputOnly",
+      CellTags->"Theory (limit)"]},
+  "2-ary limit"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "2-ary limit of sum"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "3-ary limit"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "3-ary limit of sum"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "4-ary limit"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "4-ary limit of sum"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "distance of sum"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "fsum"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "max-greater"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "maximum"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "sum of sequences"->{
+    Cell[11041, 334, 340, 6, 63, "Input",
+      CellTags->{
+      "2-ary limit", "2-ary limit of sum", "3-ary limit", 
+        "3-ary limit of sum", "4-ary limit", "4-ary limit of sum", 
+        "distance of sum", "fsum", "max-greater", "maximum", 
+        "sum of sequences"}]},
+  "1"->{
+    Cell[29556, 857, 1489, 46, 33, "Text",
+      CellTags->"1"]},
+  "2"->{
+    Cell[31262, 912, 1446, 45, 33, "Text",
+      CellTags->"2"]},
+  "3"->{
+    Cell[33865, 998, 2931, 83, 48, "Text",
+      CellTags->"3"]},
+  "4"->{
+    Cell[37516, 1107, 2846, 81, 50, "Text",
+      CellTags->"4"]},
+  "5"->{
+    Cell[41519, 1229, 2931, 83, 48, "Text",
+      CellTags->"5"]},
+  "6"->{
+    Cell[45170, 1338, 2846, 81, 50, "Text",
+      CellTags->"6"]},
+  "7"->{
+    Cell[49178, 1460, 3516, 96, 48, "Text",
+      CellTags->"7"]},
+  "8"->{
+    Cell[52912, 1565, 952, 30, 33, "Text",
+      CellTags->"8"]},
+  "9"->{
+    Cell[54081, 1604, 2991, 83, 47, "Text",
+      CellTags->"9"]},
+  "10"->{
+    Cell[57497, 1704, 2619, 73, 38, "Text",
+      CellTags->"10"]},
+  "11"->{
+    Cell[61272, 1818, 2870, 78, 38, "Text",
+      CellTags->"11"]},
+  "12"->{
+    Cell[65290, 1937, 3990, 107, 88, "Text",
+      CellTags->"12"]},
+  "13"->{
+    Cell[70059, 2073, 3101, 82, 78, "Text",
+      CellTags->"13"]},
+  "14"->{
+    Cell[80437, 2374, 2503, 69, 104, "Text",
+      CellTags->"14"]},
+  "15"->{
+    Cell[83621, 2469, 2413, 67, 59, "Text",
+      CellTags->"15"]},
+  "16"->{
+    Cell[86730, 2562, 1693, 48, 71, "Text",
+      CellTags->"16"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"Definition (limit:)", 174229, 5817},
+  {"Proposition (limit of sum)", 174434, 5822},
+  {"Definition (+:)", 174640, 5827},
+  {"Lemma (|+|)", 174820, 5832},
+  {"Lemma (max)", 174994, 5837},
+  {"Theory (limit)", 175169, 5842},
+  {"2-ary limit", 175272, 5845},
+  {"2-ary limit of sum", 175578, 5852},
+  {"3-ary limit", 175877, 5859},
+  {"3-ary limit of sum", 176183, 5866},
+  {"4-ary limit", 176482, 5873},
+  {"4-ary limit of sum", 176788, 5880},
+  {"distance of sum", 177091, 5887},
+  {"fsum", 177383, 5894},
+  {"max-greater", 177682, 5901},
+  {"maximum", 177977, 5908},
+  {"sum of sequences", 178281, 5915},
+  {"1", 178570, 5922},
+  {"2", 178645, 5925},
+  {"3", 178720, 5928},
+  {"4", 178795, 5931},
+  {"5", 178871, 5934},
+  {"6", 178947, 5937},
+  {"7", 179023, 5940},
+  {"8", 179099, 5943},
+  {"9", 179174, 5946},
+  {"10", 179251, 5949},
+  {"11", 179329, 5952},
+  {"12", 179407, 5955},
+  {"13", 179486, 5958},
+  {"14", 179564, 5961},
+  {"15", 179643, 5964},
+  {"16", 179721, 5967}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1705, 50, 139, 5, 26, "OnlineHeader"],
+
+Cell[CellGroupData[{
+Cell[1869, 59, 128, 5, 116, "Title"],
+Cell[2000, 66, 34, 0, 26, "Author"],
+Cell[2037, 68, 422, 12, 88, "Address"],
+
+Cell[CellGroupData[{
+Cell[2484, 84, 130, 3, 67, "SectionFirst"],
+Cell[2617, 89, 909, 15, 217, "Text"],
+Cell[3529, 106, 807, 19, 141, "Text"],
+Cell[4339, 127, 135, 5, 27, "Text"],
+Cell[4477, 134, 166, 5, 42, "BulletedList"],
+Cell[4646, 141, 281, 8, 42, "BulletedList"],
+Cell[4930, 151, 294, 7, 42, "BulletedList"],
+Cell[5227, 160, 358, 13, 42, "BulletedList"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5622, 178, 149, 3, 39, "Section"],
+Cell[5774, 183, 718, 12, 141, "Text"],
+Cell[6495, 197, 311, 7, 65, "Text"],
+Cell[6809, 206, 243, 8, 46, "Text"],
+Cell[7055, 216, 434, 9, 98, "InputOnly",
+  CellTags->"Definition (limit:)"],
+Cell[7492, 227, 355, 11, 47, "Text"],
+Cell[7850, 240, 358, 9, 99, "InputOnly",
+  CellTags->"Proposition (limit of sum)"],
+Cell[8211, 251, 393, 8, 84, "Text"],
+Cell[8607, 261, 241, 6, 79, "InputOnly",
+  CellTags->"Definition (+:)"],
+Cell[8851, 269, 579, 13, 99, "InputOnly",
+  CellTags->"Lemma (|+|)"],
+Cell[9433, 284, 348, 8, 79, "InputOnly",
+  CellTags->"Lemma (max)"],
+Cell[9784, 294, 242, 5, 46, "Text"],
+Cell[10029, 301, 843, 24, 128, "InputOnly",
+  CellTags->"Theory (limit)"],
+Cell[10875, 327, 141, 3, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[11041, 334, 340, 6, 63, "Input",
+  CellTags->{
+  "2-ary limit", "2-ary limit of sum", "3-ary limit", "3-ary limit of sum", 
+    "4-ary limit", "4-ary limit of sum", "distance of sum", "fsum", 
+    "max-greater", "maximum", "sum of sequences"}],
+Cell[11384, 342, 89, 1, 43, "Output"]
+}, Open  ]],
+Cell[11488, 346, 506, 8, 123, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[12031, 359, 48, 0, 39, "Section"],
+Cell[12082, 361, 202, 5, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[12287, 368, 3062, 87, 66, "Text",
+  CellTags->"Proposition (limit of sum)"],
+Cell[15352, 457, 218, 5, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[15573, 464, 4112, 107, 100, "Text",
+  CellTags->"Definition (limit:)"],
+Cell[19688, 573, 2571, 76, 40, "Text",
+  CellTags->"Definition (+:)"],
+Cell[22262, 651, 4456, 119, 57, "Text",
+  CellTags->"Lemma (|+|)"],
+Cell[26721, 772, 2617, 76, 64, "Text",
+  CellTags->"Lemma (max)"],
+Cell[29341, 850, 212, 5, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[29556, 857, 1489, 46, 33, "Text",
+  CellTags->"1"],
+Cell[31048, 905, 211, 5, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[31262, 912, 1446, 45, 33, "Text",
+  CellTags->"2"],
+Cell[32711, 959, 1151, 37, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[33865, 998, 2931, 83, 48, "Text",
+  CellTags->"3"],
+Cell[36799, 1083, 714, 22, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[37516, 1107, 2846, 81, 50, "Text",
+  CellTags->"4"],
+Cell[40365, 1190, 1151, 37, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[41519, 1229, 2931, 83, 48, "Text",
+  CellTags->"5"],
+Cell[44453, 1314, 714, 22, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[45170, 1338, 2846, 81, 50, "Text",
+  CellTags->"6"],
+Cell[48019, 1421, 1156, 37, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[49178, 1460, 3516, 96, 48, "Text",
+  CellTags->"7"],
+Cell[52697, 1558, 212, 5, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[52912, 1565, 952, 30, 33, "Text",
+  CellTags->"8"],
+Cell[53867, 1597, 211, 5, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[54081, 1604, 2991, 83, 47, "Text",
+  CellTags->"9"],
+Cell[57075, 1689, 419, 13, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[57497, 1704, 2619, 73, 38, "Text",
+  CellTags->"10"],
+Cell[60119, 1779, 1150, 37, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[61272, 1818, 2870, 78, 38, "Text",
+  CellTags->"11"],
+Cell[64145, 1898, 1142, 37, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[65290, 1937, 3990, 107, 88, "Text",
+  CellTags->"12"],
+Cell[69283, 2046, 773, 25, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[70059, 2073, 3101, 82, 78, "Text",
+  CellTags->"13"],
+Cell[73163, 2157, 1122, 37, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[74288, 2196, 2504, 65, 59, "Text",
+  CounterIncrements->"Text"],
+Cell[76795, 2263, 679, 22, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[77477, 2287, 2255, 61, 59, "Text",
+  CounterIncrements->"Text"],
+Cell[79735, 2350, 699, 22, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[80437, 2374, 2503, 69, 104, "Text",
+  CellTags->"14"],
+Cell[82943, 2445, 675, 22, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[83621, 2469, 2413, 67, 59, "Text",
+  CellTags->"15"],
+Cell[86037, 2538, 690, 22, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[86730, 2562, 1693, 48, 71, "Text",
+  CellTags->"16"],
+Cell[88426, 2612, 193, 5, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[88622, 2619, 775, 21, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[89400, 2642, 674, 21, 52, "Text",
+  CounterIncrements->"Text"],
+Cell[90077, 2665, 597, 18, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[90677, 2685, 658, 19, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[91338, 2706, 200, 5, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[91541, 2713, 1119, 32, 33, "Text",
+  CounterIncrements->"Text"],
+Cell[92663, 2747, 684, 22, 33, "Text",
+  CounterIncrements->"Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[93384, 2774, 30, 0, 39, "Section"],
+Cell[93417, 2776, 867, 14, 217, "Text"],
+Cell[94287, 2792, 385, 8, 103, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[94709, 2805, 33, 0, 39, "Section"],
+Cell[94745, 2807, 174, 4, 65, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[94956, 2816, 46, 0, 27, "SectionAboutAuthor"],
+Cell[95005, 2818, 428, 7, 116, "TextAboutAuthor"]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/computer-science/programming-languages/python/_index.en.md
+---
+Title: Python
+weight: 1
+chapter: true
+---
+
+### Scripties
+
+# Python
+
+comments
+#+END_SRC
