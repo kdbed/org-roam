@@ -1,0 +1,8 @@
+#+title: Splunk
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: infosec
+#+hugo_weight: 20
+
+* Splunk

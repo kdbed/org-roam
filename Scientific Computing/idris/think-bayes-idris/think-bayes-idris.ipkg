@@ -1,0 +1,9 @@
+package thinkbayesidris
+
+modules = Main
+
+sourcedir = src
+
+opts = "-p contrib" 
+
+pkgs = containers
