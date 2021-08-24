@@ -1,0 +1,8 @@
+#+title: Oauth
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: infosec/pentesting/web
+#+hugo_weight: 5
+
+* Oauth

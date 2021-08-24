@@ -1,0 +1,1 @@
+/home/kdb/Documents/github/org-roam/Computer\ Science/Programming\ Languages/rust/scratch/beginMessier/gameOfLife1/target/debug/game_of_life1: /home/kdb/Documents/github/org-roam/Computer\ Science/Programming\ Languages/rust/scratch/beginMessier/gameOfLife1/src/main.rs

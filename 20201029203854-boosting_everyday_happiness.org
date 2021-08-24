@@ -1,5 +1,5 @@
 #+title: Boosting everyday happiness
-#+SETUPFILE:/home/kdb/org-roam/hugo_setup.org
+#+SETUPFILE:/home/kdb/org/hugo_setup.org
 #+HUGO_SECTION: misc
 
 
@@ -27,6 +27,5 @@ There are four main hormones that trigger feelings of happiness, each connected 
 
 
 
-- tags :: [[file:20201029204132-happiness.org][Happiness]], [[file:20201029211146-the_gut_brain_connection.org][The Gut-Brain Connection]], [[file:20201029211728-status.org][Status]]
-
+- tags ::
 bibliography:refs.bib

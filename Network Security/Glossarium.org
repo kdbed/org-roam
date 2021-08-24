@@ -1,0 +1,10 @@
+#+title: Glossarium
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: infosec
+#+hugo_weight: 1000
+
+
+* Glossary of Terms
+- _XML_ _DTD_ : DTD stands for Document Type Definition. A DTD defines the structure and the legal elements and attributes of an XML document. A DTD defines the valid building blocks of an XML document. It defines the document structure with a list of validated elements and attributes. A DTD can be declared inline inside an XML document, or as an external reference. [[file:Penetration Testing/Web/xxeInjection.org::*Origins][XXE]]

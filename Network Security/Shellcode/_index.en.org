@@ -1,0 +1,13 @@
+#+BEGIN_SRC markdown :tangle /home/kdb/Documents/github/owlglass/content/infosec/shellcode/_index.en.md
+---
+Title: Shellcode
+weight: 6
+chapter: true
+---
+
+### infosec
+
+# Shellcode
+
+comments
+#+END_SRC

@@ -1,17 +1,11 @@
 #+TITLE: Basics of Overflow Attacks
-#+options: toc: 2
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: infosec/shellcode
+#+hugo_weight: 10
 
 cite:HamzaMegahed706
-
-* Contents
-:PROPERTIES:
-:TOC:      :include all :depth 3
-:END:
-:CONTENTS:
-- [[#contents][Contents]]
-- [[#introduction][Introduction]]
-  - [[#penetration-testing][Penetration Testing]]
-:END:
 
 * Introduction
 ** Penetration Testing

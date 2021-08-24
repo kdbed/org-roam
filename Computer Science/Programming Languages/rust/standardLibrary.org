@@ -1,0 +1,73 @@
+#+title: Standard Library
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: computer-science/programming-languages/rust
+#+hugo_weight: 10
+
+* Concatenating Strings
+String manipulation is typically a bit less straightforward in system programming languages than in scripting languages, and Rust is no exception. There are multiple ways to do it, all managing the involved resources differently.  cite:DanielDuranteJanNilsFerner7048
+** Code for Basic String Concatenation
+Consider the following program =concat.rs=
+#+begin_src rust :tangle ./scratch/concat.rs
+fn main() {
+    by_moving();
+    by_cloning();
+    by_mutating();
+}
+#+end_src
+All functions start by allocating memory for a string of variable length by creating a string slice (=&str=) and applying the =to_string()= function to it.
+
+The first method takes the allocated memory and moves it, together with an additional string slice, into a new variable. Advantages:
+ - clear, follows common programming convention of concatenating with the $+$ operator
+ - uses only immutable data; good practice is to write code with as little stateful behavior as possible
+ - reuses the memory allocated by =hello=
+
+#+begin_src rust -n :tangle ./scratch/concat.rs
+fn by_moving() {
+    let hello = "hello ".to_string();
+    let world = "world!";
+    // Moving hello into a new variable
+    let hello_world = hello + world;
+    // Hello CANNOT be used anymore
+    println!("{}", hello_world); // Prints "hello world!"
+}
+#+end_src
+There are two downsides to this approach:
+  - =hello= is no longer usable after line [5] above, as it was moved. This means you can no longer read it in any way
+  - Sometimes you may actually prefer mutable data in order to use state in small, contained environments
+The two concerns are addressed in turn.  The next functions clones the allocated string into a temporary object (which allocates new memory), which it then moves, leaving the original =hello= untouched.
+#+begin_src rust -n :tangle ./scratch/concat.rs
+fn by_cloning() {
+    let hello = "hello ".to_string();
+    let world = "world!";
+    // Creating a copy of hello and moving it into a new var
+    let hello_world = hello.clone() + world;
+    // Hello can still be used
+    println!("{}", hello_world); // Prints "hello world!"
+}
+#+end_src
+Finally, there is the stateful way of solving the problem, which leaves =hello= mutable and ready for further changes.
+#+begin_src rust -n :tangle ./scratch/concat.rs
+fn by_mutating() {
+    let mut hello = "hello ".to_string();
+    let world = "world!";
+    // hello gets modified in place
+    hello.push_str(world);
+    // hello is both usable and modifiable
+    println!("{}", hello); // Prints "hello world!"
+}
+#+end_src
+
+Now compile and run:
+#+begin_src shell -n :exports both :results output verbatim
+rustc ./scratch/concat.rs -o ./scratch/concat && ./scratch/concat
+#+end_src
+
+#+RESULTS:
+: hello world!
+: hello world!
+: hello world!
+in which we see that the results are the same.
+
+** Using the format! macro

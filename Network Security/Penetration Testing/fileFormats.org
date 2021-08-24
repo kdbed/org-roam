@@ -1,0 +1,14 @@
+#+title: File Formats
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: infosec/pentesting
+#+hugo_weight: 50
+
+
+* PDF - Portable Document Format
+** Metadata - exiftool
+Document metadata can be obtained using =exiftool= ([[https://exiftool.org/][ExifTool by Phil Harvey]]):
+#+begin_src shell -n
+exiftool <fileName>
+#+end_src

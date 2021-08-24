@@ -1,0 +1,38 @@
+#+title: Basics - Rust by Example
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: computer-science/programming-languages/rust
+#+hugo_weight: 1
+
+
+* 1. Hello, World
+** Code
+Program: =hello.rs=
+#+begin_src rust -n :tangle hello.rs
+// This is a comment, and is ignored by the compiler
+
+// This is the main function
+fn main() {
+    // Statements here are executed when the compiled binary is called
+
+    // Print text to the console
+    println!("Hello World!");
+    println!("I'm a Rustacean!");
+}
+#+end_src
+
+Now compile and run:
+
+#+begin_src shell -n :exports both :results output verbatim
+rustc hello.rs && ./hello
+#+end_src
+
+#+RESULTS:
+: Hello World!
+: I'm a Rustacean!
+** Analysis
+=println!= is a *macro* that prints text to the console.  A binary can be generated using the Rust compiler: rustc.
+
+* 2. Comments
+** Code

@@ -1,0 +1,6 @@
+#+title: Data Science
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: computer-science/ai-ml
+#+hugo_weight: 5

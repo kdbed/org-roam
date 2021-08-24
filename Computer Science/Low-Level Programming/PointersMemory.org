@@ -1,0 +1,31 @@
+#+title: Pointers and Memory Management
+#+hugo_base_dir: /home/kdb/Documents/github/owlglass
+#+hugo_auto_set_lastmod: t
+#+options: H:2
+#+HUGO_SECTION: computer-science/low_level
+#+hugo_weight: 2
+
+* Memory, Objects, and Addresses
+Everything manipulated in a computer program -- along with the program itself --
+must reside somewhere in your computer’s memory: on a disk, in its RAM circuits,
+in various levels of cache, or in a CPU’s or GPU’s registers.  Consider the 'Hello, world!' program:
+#+begin_src c :tangle ./scratch/hello.c
+#include <stdio.h>
+
+int main(void) {
+  printf("Hello, world!\n");
+  return 0;
+}
+#+end_src
+Compile and run:
+#+begin_src shell -n :exports both :results output verbatim
+gcc ./scratch/hello.c -o ./scratch/hello; ./scratch/hello
+#+end_src
+
+#+RESULTS:
+: Hello, world!
+
+Although the programmer isn't concerned with the computer’s memory when the code is written or executed, a number of objects must necessarily be represented in memory before the program can run: the program itself, including the main() function written by the programmer and the printf() function she gets from the runtime system; the two arguments given to main() -- argc and argv; the constant string "Hello, world!\n".
+
+** Factorial
+Consider a function that computes the factorial of an integer $n$:
